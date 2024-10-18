@@ -33,6 +33,7 @@ public class psj0925 {
 		// 협업이 아니라, 1) 수업용 코드 공유, 2) 과제 제출(작업 한 파일만 제출.!!)
 		
 		System.out.println("깃테스트2, 박수종");
+		System.out.println("깃테스트2, 박수종");
 
 	}
 
