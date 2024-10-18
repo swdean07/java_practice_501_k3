@@ -1,4 +1,4 @@
-package ex_241018_ch1;
+package ex_241018_ch2;
 
 import java.util.Scanner;
 
