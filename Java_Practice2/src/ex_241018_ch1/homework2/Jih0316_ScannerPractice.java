@@ -40,7 +40,6 @@ public class Jih0316_ScannerPractice {
 		System.out.println("주소는 : " + userAddr);
 		System.out.println("전화번호는 : " + userNum);
 		System.out.println("좋아하는 메뉴는 : " + userFavMenu);
-		
 	}
 
 }
