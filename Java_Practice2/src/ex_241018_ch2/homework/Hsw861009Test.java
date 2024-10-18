@@ -18,7 +18,6 @@ public class Hsw861009Test {
 			System.out.println("로그인 성공입니다.");
 		else
 			System.out.println("로그인 실패입니다.");
-			
 	}
 
 }
