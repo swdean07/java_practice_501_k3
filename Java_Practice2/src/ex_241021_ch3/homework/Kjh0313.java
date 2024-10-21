@@ -12,7 +12,7 @@ public class Kjh0313 {
 			menu[i] = scanner.nextLine();
 		}
 		System.out.println("");
-		System.out.println("오늘 먹고 싶은 메뉴 :");
+		System.out.println("오늘 먹고 싶은 메에뉴 :");
 		for (String m : menu) {
 			System.out.println(m);
 		}
