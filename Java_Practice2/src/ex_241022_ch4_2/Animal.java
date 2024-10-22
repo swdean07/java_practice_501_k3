@@ -11,5 +11,26 @@ public class Animal {
 	public void speak() {
 		System.out.println("야호~");
 	}
+
+	
+	// 시스템이 만들어준 기본 생성자 뿐. 
+	// 그래서, 추가하기.
+	public Animal(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+	
+	public Animal() {
+		
+	}
+	
 	
 }
+
+
+
+
+
+
+
