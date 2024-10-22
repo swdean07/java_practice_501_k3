@@ -19,6 +19,10 @@ public class MainClassAnimal {
 		JinDog jinDog2 = new JinDog("진돌이",2,"수영");
 		jinDog2.showInfo();
 		
+		System.out.println("jinDog의 color: " + jinDog.color);
+		System.out.println("jinDog2의 color: " + jinDog2.color);
+		System.out.println(JinDog.color);
+		
 	}
 }
 
