@@ -12,7 +12,7 @@ public class CircleArray {
 
 		for (int i = 0; i < c.length; i++) {
 			System.out.println((int) (c[i].getArea()) + " ");
-			int result2 = System.identityHashCode(c);
+			int result2 = System.identityHashCode(c[i]);
 			System.out.println("c 배열의 각원소의 임시 주솟값: " + result2);
 		}
 	}
