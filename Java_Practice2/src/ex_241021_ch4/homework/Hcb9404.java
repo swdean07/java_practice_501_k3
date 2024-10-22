@@ -28,9 +28,16 @@ public class Hcb9404 {
 //		Canape.introduce();
 		double r;
 		r = Math.floor(Math.random()*3);
-		
+		//0~0.33... ->0
+		//0.33..4~0.66... ->1
+		//0.66..4~0.99...->2
+		//3이면 에러
+		if (r == 3) {
+			menu[2].introduce();
+		}
+		else {
 		menu[(int)r].introduce();
-		
+		}
 	}
 
 }
