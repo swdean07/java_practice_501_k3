@@ -15,6 +15,10 @@ public class MainClassAnimal {
 		jinDog.speak();
 		jinDog.introduce();
 		jinDog.introduce("개껌", "서면");
+		
+		JinDog jinDog2 = new JinDog("진돌이",2,"수영");
+		jinDog2.showInfo();
+		
 	}
 }
 
