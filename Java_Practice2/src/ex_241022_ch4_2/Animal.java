@@ -7,6 +7,9 @@ public class Animal {
 	// default , 같은 패키지 내부에서 볼수 있음. 
 	protected String name;
 	protected int age;
+	// 공유자원으로 사용이 됨. 
+	// 각 인스턴스를 만들어도, 해당 전역 자원과는 별개. 
+	static String color = "red";
 	
 	public void speak() {
 		System.out.println("야호~");
