@@ -9,7 +9,7 @@ public class Jh1_Mutalisk extends Jh1_ZergUnit {
     final Jh1_Weapon weapon = new MutaliskWeapon();
 
     size = Jh1_SC1.Size.Medium;
-    isAir = false;
+    isAir = true;
     isWorker = false;
     mineralCost = 75;
     gasCost = 25;

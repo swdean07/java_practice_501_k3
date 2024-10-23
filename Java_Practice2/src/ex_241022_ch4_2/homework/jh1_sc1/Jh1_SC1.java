@@ -1,5 +1,7 @@
 package ex_241022_ch4_2.homework.jh1_sc1;
 
+import java.util.Random;
+
 public class Jh1_SC1 {
   public enum Race {
     Terran,
@@ -42,6 +44,16 @@ public class Jh1_SC1 {
         unit.showSpecialInfo();
         unit.showWeapons();
         System.out.println("\n");
+      }
+      
+      Random rng = new Random();
+      
+      for (Jh1_Unit unit : units) {
+    	  for (int i = 0; i < 3; i ++) {
+    		  Jh1_Unit target = units[rng.nextInt(units.length)];
+    		  unit.attack(target);
+    	  }
+    	  System.out.println();
       }
   }
 }

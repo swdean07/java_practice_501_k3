@@ -1,6 +1,12 @@
 package ex_241022_ch4_2.homework.jh1_sc1;
 
 public abstract class Jh1_Unit {
+	protected static final float[][] dmgScale = // [dtype][size]
+		{
+			{ 1f, .5f, .25f },
+			{ .5f, .75f, 1f },
+			{ 1f, 1f, 1f }
+		};
   protected String name;
   protected Jh1_SC1.Race race; // T / Z / P 
   protected Jh1_SC1.Size size; // Small / Medium / Large
@@ -51,4 +57,31 @@ public abstract class Jh1_Unit {
         
     }
   }
+  
+  public void attack(Jh1_Unit target) {
+	  if ((groundWeapon == null && !target.isAir)
+		  || (airWeapon == null && target.isAir)) {
+		  System.out.println(name + " can't attack "+ target.name + "!");
+		  return;
+	  }
+	  Jh1_Weapon weapon = target.isAir ? airWeapon : groundWeapon;
+	  
+	  System.out.println(name+ " attacks " + target.name + "!");
+	  for (int i = 0; i < weapon.hitPerAttack ; i++) {
+		  float f = target.getHurt(weapon.calcDmgOnce(), weapon.dtype);
+		  System.out.println(target.name + " took "+ f + " damage!");
+	  }
+  }
+  
+  public float getHurt(float dmg, Jh1_SC1.DamageType dtype) {
+	  dmg -= defense;
+	  dmg *= dmgScale[dtype.ordinal()][size.ordinal()];
+	  return dmg;
+	  
+  }
+  
+  public float getHurt(int dmg, Jh1_SC1.DamageType dtype) {
+	  return this.getHurt((float) dmg, dtype);
+  }
+  
 }
