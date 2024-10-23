@@ -40,6 +40,8 @@ public class ColorPointEx {
 		Point p1 = new ColorPoint();
 		p1.showPoint();
 		
+		// 추상 클래스의 인스턴스 만들기 불가. 
+		// Point2 p2 = new Point2();
 		
 
 	}
