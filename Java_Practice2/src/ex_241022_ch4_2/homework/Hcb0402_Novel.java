@@ -28,18 +28,17 @@ public final class Hcb0402_Novel extends Hcb0402_Movie {
 		System.out.println("이 책의 제목은 " + name + "입니다");
 		System.out.println("이 책의 작가는 " + author + "입니다");
 		System.out.println("이 책의 발매일은 " + release + "입니다");
-		System.out.println("이 책의 등장인물은");
 		for(String c:character) {
-			if(c == character[character.length-1]) {
-				System.out.println(c + "입니다");
+			if(c == character[0] && c == character[character.length-1]) {
+				System.out.println("이 게임의 등장인물은 " + c + "입니다");
 			} else if (c == character[0]) {
-				System.out.print("이 영화의 등장인물은 " + c + ", ");
-			}
-			else {
+				System.out.print("이 게임의 등장인물은 " + c + ", ");
+			} else if (c == character[character.length-1]) {
+				System.out.println(c + " 입니다");
+			} else {
 				System.out.print(c + ", ");
 			}
 		}
-		System.out.println("입니다");
 		System.out.println("이 책은 " + award + " 을 수상 했습니다");
 		System.out.println("이 책은 " + page + "페이지 분량입니다");
 	}

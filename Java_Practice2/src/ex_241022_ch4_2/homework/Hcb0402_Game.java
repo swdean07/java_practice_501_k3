@@ -36,18 +36,17 @@ public class Hcb0402_Game extends Hcb0402_Movie {
 			System.out.println("이 게임의 제목은 " + name + "입니다");
 			System.out.println("이 게임의 제작사는 " + author + "입니다");
 			System.out.println("이 게임의 발매일은 " + release + "입니다");
-			System.out.println("이 게임의 등장인물은");
 			for(String c:character) {
-				if(c == character[character.length-1]) {
-					System.out.println(c + "입니다");
+				if(c == character[0] && c == character[character.length-1]) {
+					System.out.println("이 게임의 등장인물은 " + c + " 입니다");
 				} else if (c == character[0]) {
-					System.out.print("이 영화의 등장인물은 " + c + ", ");
-				}
-				else {
+					System.out.print("이 게임의 등장인물은 " + c + ", ");
+				} else if (c == character[character.length-1]) {
+					System.out.println(c + " 입니다");
+				} else {
 					System.out.print(c + ", ");
 				}
 			}
-			System.out.println("입니다");
 			System.out.println("이 게임은 " + platform + "에서 플레이 가능합니다");
 			System.out.println("이 게임은 " + metaScore + "점의 점수를 받았습니다");
 		}
