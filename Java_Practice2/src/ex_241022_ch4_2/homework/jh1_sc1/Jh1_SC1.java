@@ -23,6 +23,8 @@ public class Jh1_SC1 {
 
 
   public static void main(String[] args) {
+	  Jh1_Unit mutalisk = new Jh1_Mutalisk();
+	  Jh1_Corsair corsair = new Jh1_Corsair();
       Jh1_Unit[] units = {
         new Jh1_Marine(),
         new Jh1_Vulture(),
@@ -33,10 +35,11 @@ public class Jh1_SC1 {
         new Jh1_Zergling(),
         new Jh1_Hydralisk(),
         new Jh1_Lurker(),
-        new Jh1_Mutalisk(),
+        mutalisk,
         new Jh1_Zealot(),
         new Jh1_Dragoon(),
-        new Jh1_DarkTemplar()
+        new Jh1_DarkTemplar(),
+        corsair
       };
 
       for (Jh1_Unit unit : units) {
@@ -53,6 +56,8 @@ public class Jh1_SC1 {
     		  Jh1_Unit target = units[rng.nextInt(units.length)];
     		  unit.attack(target);
     	  }
+    	  if (unit != mutalisk) unit.attack(mutalisk);
+    	  if (unit != corsair) unit.attack(corsair);
     	  System.out.println();
       }
   }
