@@ -33,11 +33,16 @@ public class Hcb0402_Movie {
 		System.out.println("이 영화의 제목은 " + name + "입니다");
 		System.out.println("이 영화의 감독은 " + author + "입니다");
 		System.out.println("이 영화의 발매일은 " + release + "입니다");
-		System.out.println("이 영화의 등장인물은");
 		for(String c:character) {
-			System.out.println(c);
+			if(c == character[character.length-1]) {
+				System.out.println(c + "입니다");
+			} else if (c == character[0]) {
+				System.out.print("이 영화의 등장인물은 " + c + ", ");
+			}
+			else {
+				System.out.print(c + ", ");
+			}
 		}
-		System.out.println("입니다");
 	}
 	//method overload
 	public void introduce(String name, String author) {

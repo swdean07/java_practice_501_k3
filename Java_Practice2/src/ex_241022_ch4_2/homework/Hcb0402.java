@@ -36,6 +36,7 @@ public class Hcb0402 {
 		System.out.println("=====method overriding=====");
 		movie[1].introduce();
 		novel[1].introduce();
+		game[1].introduce();
 		
 		//getter,setter 실험
 		int score;
