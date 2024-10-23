@@ -23,4 +23,8 @@ public class Lsh0708Person {
 		System.out.println("이름 :" + this.name + ", 번호 :" + this.number + ", 저장 일자 :" + this.date);
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
 }
