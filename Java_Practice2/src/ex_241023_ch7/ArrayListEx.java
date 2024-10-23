@@ -49,6 +49,17 @@ public class ArrayListEx {
 			System.err.println("검색 결과 : " + a.get(a.indexOf(search)));
 		}
 		
+		// 제거하는 부분. 
+		a.remove(longestIndex);
+		
+		// 제거 후 이름 출력
+		for (int i = 0; i < a.size(); i++) {
+			// 순서3
+			// 가져오기 기능. 
+			// ArrayList의 i 번째 문자열 얻어오기
+			String name = a.get(i);
+			System.out.print(name + " ");
+		}
 		
 	}
 }
