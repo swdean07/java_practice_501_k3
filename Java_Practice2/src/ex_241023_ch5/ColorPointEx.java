@@ -5,13 +5,13 @@ public class ColorPointEx {
 	public static void main(String[] args) {
 		Point p = new Point(); // Point 객체 생성
 		p.set(1, 2); // Point 클래스의 set() 호출
-		p.showPoint();
+//		p.showPoint();
 		
 
 		ColorPoint cp = new ColorPoint();
 		cp.set(3, 4); // Point 클래스의 set() 호출
 		cp.setColor("red"); // ColorPoint의 setColor() 호출
-		cp.showColorPoint(); // 컬러와 좌표 출력
+//		cp.showColorPoint(); // 컬러와 좌표 출력
 		
 		// 업캐스팅, 부모타입  참조형변수 = 자식 타입. 
 		// point 참조형 변수의 타입은 부모 타입. 
@@ -35,6 +35,10 @@ public class ColorPointEx {
 		// List<Point>
 		// 인터페이스, 부모 개념, 자식 개념, 재사용. 
 		// 재사용 목적으로 사용을 함. 
+		
+		// 부모형. 
+		Point p1 = new ColorPoint();
+		p1.showPoint();
 		
 		
 

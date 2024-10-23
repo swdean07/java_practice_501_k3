@@ -9,13 +9,22 @@ class Point {
 	// super();
 //}
 	
+	
 	public void set(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
 	public void showPoint() { // 점의 좌표 출력
-		System.out.println("(" + x + "," + y + ")");
+		System.out.println("부모 클래스의 메서드 showPoint(): (" + x + "," + y + ")");
 	}
 }
 
@@ -34,6 +43,10 @@ class ColorPoint extends Point {
 	public void showColorPoint() { // 컬러 점의 좌표 출력
 		System.out.print(color);
 		showPoint(); // Point의 showPoint() 호출
+	}
+	
+	public void showPoint() { // 점의 좌표 출력
+		System.out.println("자식 클래스의 메서드 showPoint(): (" + super.getX() + "," + super.getY() + ")");
 	}
 }
 

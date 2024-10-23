@@ -14,6 +14,10 @@ class Professor extends Researcher {
 
 public class InstanceOfEx {
 	static void print(Person p) {
+		// 업캐스팅
+		// Person p = student
+		// Person p = researcher
+		// Person p = professor
 		if (p instanceof Person)
 			System.out.print("Person ");
 		if (p instanceof Student)
@@ -27,6 +31,7 @@ public class InstanceOfEx {
 
 	public static void main(String[] args) {
 		System.out.print("new Student() -> ");
+		Student s1 = new Student();
 		print(new Student());
 		System.out.print("new Researcher() -> ");
 		print(new Researcher());
