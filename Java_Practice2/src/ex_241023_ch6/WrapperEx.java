@@ -11,8 +11,11 @@ public class WrapperEx {
 			System.out.println(c2 + "는 영문자");
 
 		// Integer 사용
+		// 문자형 -> 기본형으로 변경. 
 		System.out.println(Integer.parseInt("28")); // 문자열 "28"을 10진수로 변환
+		// 기본형 -> 참조형으로 변경. 
 		System.out.println(Integer.toString(28)); // 정수 28을 2진수 문자열로 변환
+		
 		System.out.println(Integer.toBinaryString(28)); // 28을 16진수 문자열로 변환
 		System.out.println(Integer.bitCount(28)); // 28에 대한 2진수의 1의 개수
 		Integer i = Integer.valueOf(28);
