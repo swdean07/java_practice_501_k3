@@ -18,11 +18,15 @@ public abstract class Jh1_ProtossUnit extends Jh1_Unit {
   }
 
   @Override
-	public float getHurt(int dmg, DamageType dtype) {
+	public float getHurt(float dmg, DamageType dtype) {
 	  float shieldRemain = (float) (maxShield - dmg);
 	  if (shieldRemain > 0) return (float) dmg;
 	  float dmgOverShield = -shieldRemain;
 	  return maxShield + super.getHurt(dmgOverShield, dtype);
-//		return super.getHurt(dmg, dtype);
+	}
+  	
+  @Override
+	public float getHurt(int dmg, DamageType dtype) {
+		return this.getHurt((float) dmg, dtype);
 	}
 }
