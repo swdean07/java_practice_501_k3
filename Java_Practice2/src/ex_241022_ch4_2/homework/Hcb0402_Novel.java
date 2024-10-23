@@ -6,11 +6,10 @@ public final class Hcb0402_Novel extends Hcb0402_Movie {
 	int page;
 	
 	//constructor
+	//constructor under constructor must be first line of constructor
+	//this also apply to super
 	Hcb0402_Novel(String name, String author, int release, String[] character, String award, int page){
-		this.name = name;
-		this.author = author;
-		this.release = release;
-		this.character = character;
+		super(name, author, release, character);
 		this.award = award;
 		this.page = page;
 	}
