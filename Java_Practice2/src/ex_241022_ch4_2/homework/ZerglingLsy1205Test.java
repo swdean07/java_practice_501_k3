@@ -41,6 +41,22 @@ public class ZerglingLsy1205Test extends ZergLsy1205Test {
 		super();
 	}
 	
+	// 메서드 재정의 : 
+	// 부모 클래스의 메서드와 이름이 같지만 
+	// 구현하는 기능이 다르다.
+	@Override
+	public void move() {
+		System.out.println("느린 달리기");
+	}
+	@Override
+	public void attack() {
+		System.out.println("느린 공격");
+	}
+	@Override
+	public void upgrade() {
+		System.out.println("노 발업");
+	}
+	
 }
 
 
