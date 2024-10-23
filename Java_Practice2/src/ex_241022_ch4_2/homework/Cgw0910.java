@@ -11,24 +11,24 @@ public class Cgw0910 {
 
 		for (int i = 0; i < 2; i++) {
 			for (int j = 1; j < 9; j++) {
-				piecesArr[arrayNum] = new Pawn(whiteTeam, 2, j);
+				piecesArr[arrayNum] = new Cgw0910Pawn(whiteTeam, 2, j);
 				arrayNum++;
 			}
-			piecesArr[arrayNum] = new Look(whiteTeam, 1, 1);
+			piecesArr[arrayNum] = new Cgw0910Look(whiteTeam, 1, 1);
 			arrayNum++;
-			piecesArr[arrayNum] = new Knight(whiteTeam, 1, 2);
+			piecesArr[arrayNum] = new Cgw0910Knight(whiteTeam, 1, 2);
 			arrayNum++;
-			piecesArr[arrayNum] = new Bishop(whiteTeam, 1, 3);
+			piecesArr[arrayNum] = new Cgw0910Bishop(whiteTeam, 1, 3);
 			arrayNum++;
-			piecesArr[arrayNum] = new Queen(whiteTeam, 1, 4);
+			piecesArr[arrayNum] = new Cgw0910Queen(whiteTeam, 1, 4);
 			arrayNum++;
-			piecesArr[arrayNum] = new King(whiteTeam, 1, 5);
+			piecesArr[arrayNum] = new Cgw0910King(whiteTeam, 1, 5);
 			arrayNum++;
-			piecesArr[arrayNum] = new Bishop(whiteTeam, 1, 6);
+			piecesArr[arrayNum] = new Cgw0910Bishop(whiteTeam, 1, 6);
 			arrayNum++;
-			piecesArr[arrayNum] = new Knight(whiteTeam, 1, 7);
+			piecesArr[arrayNum] = new Cgw0910Knight(whiteTeam, 1, 7);
 			arrayNum++;
-			piecesArr[arrayNum] = new Look(whiteTeam, 1, 8);
+			piecesArr[arrayNum] = new Cgw0910Look(whiteTeam, 1, 8);
 			arrayNum++;
 			whiteTeam = false;
 		}
