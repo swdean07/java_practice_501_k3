@@ -11,5 +11,10 @@ public class MyFrame1 extends JFrame {
 
 	public static void main(String[] args) {
 		MyFrame1 mf = new MyFrame1();
+		MyFrame1 mf2 = new MyFrame1();
 	}
 }
+
+
+
+
