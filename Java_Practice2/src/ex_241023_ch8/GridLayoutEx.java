@@ -13,7 +13,7 @@ public class GridLayoutEx extends JFrame {
 		Container contentPane = getContentPane();
 
 		// 1x10의 GridLayout 배치관리자
-		contentPane.setLayout(new GridLayout(1, 10));
+		contentPane.setLayout(new GridLayout(2, 5,10,10));
 
 		for (int i = 0; i < 10; i++) { // 10개의 버튼 부착
 			String text = Integer.toString(i); // i를 문자열로 변환
