@@ -78,7 +78,7 @@ public class Asy_HashMap {
 				found = true;
 			}
 		}
-		if (found = false) {
+		if (!found) {
 			System.out.println("해당 이름의 연락처가 없습니다.");
 		}
 	}
@@ -94,8 +94,10 @@ public class Asy_HashMap {
 
 	private static void randomContact(Scanner sc) {
 		Random random = new Random();
-		int index = random.nextInt(contactList.size());
-		System.out.println("랜덤 : " + contactList.get(index));
+		Object[] keys = contactList.keySet().toArray();
+		int index = random.nextInt(keys.length);
+		String randomKey = (String) keys[index];
+		System.out.println("랜덤 : " + contactList.get(randomKey));
 		String name = sc.nextLine();
 	}
 
