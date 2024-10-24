@@ -64,6 +64,27 @@ public class MainLsy1205Test {
 
 			} else if (check.equals("4")) {
 				System.out.println("삭제 기능을 구현 할 예정");
+				System.out.println("삭제할 이름 작성:>>");
+				String userName = scanner.next();
+				// found , 있다면 삭제 진행, 없다면, 사용자가 없습니다. 
+				boolean found = false;
+				PersonLsy1205Test removePerson = null;
+				// 임시 저장소에 있는 모든 사용자 검색.
+				for (PersonLsy1205Test person : persons) {
+					boolean result = person.getName().equals(userName);
+					System.out.println("result의 결과 : " + result);
+					if (result) {
+						removePerson = person;
+						found = true;
+						break;
+					}
+				}
+				if (found) {
+					persons.remove(removePerson);
+				} else {
+					System.out.println("사용자가 없습니다.");
+				}
+				
 			} else if (check.equals("5")) {
 				System.out.println("랜덤 기능을 구현 할 예정");
 			} else if (check.equals("6")) {
