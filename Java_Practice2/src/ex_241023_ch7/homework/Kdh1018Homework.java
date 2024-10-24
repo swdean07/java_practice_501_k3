@@ -6,12 +6,12 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
-class Person {
+class PersonKdh1018 {
     private String name;
     private String contact;
     private String registrationDate;
 
-    public Person(String name, String contact) {
+    public PersonKdh1018(String name, String contact) {
         this.name = name;
         this.contact = contact;
         this.registrationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
@@ -36,7 +36,7 @@ class Person {
 }
 
 public class Kdh1018Homework {
-    private ArrayList<Person> contacts = new ArrayList<>();
+    private ArrayList<PersonKdh1018> contacts = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
     public void run() {
@@ -75,7 +75,7 @@ public class Kdh1018Homework {
         String name = scanner.nextLine();
         System.out.print("연락처를 입력하세요: ");
         String contact = scanner.nextLine();
-        contacts.add(new Person(name, contact));
+        contacts.add(new PersonKdh1018(name, contact));
         System.out.println("연락처가 등록되었습니다.");
     }
 
@@ -84,7 +84,7 @@ public class Kdh1018Homework {
             System.out.println("등록된 연락처가 없습니다.");
             return;
         }
-        for (Person person : contacts) {
+        for (PersonKdh1018 person : contacts) {
             System.out.println(person);
         }
     }
@@ -106,7 +106,7 @@ public class Kdh1018Homework {
             return;
         }
         Random random = new Random();
-        Person randomPerson = contacts.get(random.nextInt(contacts.size()));
+        PersonKdh1018 randomPerson = contacts.get(random.nextInt(contacts.size()));
         System.out.println("랜덤 선택된 연락처: " + randomPerson);
     }
 
@@ -114,7 +114,7 @@ public class Kdh1018Homework {
         System.out.print("검색할 이름을 입력하세요: ");
         String name = scanner.nextLine();
         boolean found = false;
-        for (Person person : contacts) {
+        for (PersonKdh1018 person : contacts) {
             if (person.getName().equalsIgnoreCase(name)) {
                 System.out.println(person);
                 found = true;

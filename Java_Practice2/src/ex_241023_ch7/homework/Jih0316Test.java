@@ -7,12 +7,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 // Person 클래스 정의
-class Person {
+class PersonJih0316 {
 	private String name;
 	private String phone;
 	private String registrationTime;
 
-	public Person(String name, String phone) {
+	public PersonJih0316(String name, String phone) {
 		this.name = name;
 		this.phone = phone;
 		this.registrationTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -39,7 +39,7 @@ class Person {
 public class Jih0316Test {
 
 	public static void main(String[] args) {
-		ArrayList<Person> people = new ArrayList<>();
+		ArrayList<PersonJih0316> people = new ArrayList<>();
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
 
@@ -65,7 +65,7 @@ public class Jih0316Test {
 					name = scanner.nextLine();
 
 					isDuplicate = false;
-					for (Person person : people) {
+					for (PersonJih0316 person : people) {
 						if (person.getName().equals(name)) {
 							System.out.println("이미 등록된 이름입니다.");
 							isDuplicate = true;
@@ -83,7 +83,7 @@ public class Jih0316Test {
 					phone = scanner.nextLine();
 
 					isDuplicate = false;
-					for (Person person : people) {
+					for (PersonJih0316 person : people) {
 						if (person.getPhone().equals(phone)) {
 							System.out.println("이미 등록된 연락처입니다.");
 							isDuplicate = true;
@@ -96,7 +96,7 @@ public class Jih0316Test {
 					}
 				} while (phone.trim().isEmpty() || isDuplicate);
 
-				people.add(new Person(name, phone));
+				people.add(new PersonJih0316(name, phone));
 				System.out.println("등록되었습니다.");
 			} else if (choice == 2) {
 				// 출력
@@ -104,7 +104,7 @@ public class Jih0316Test {
 				if (people.isEmpty()) {
 					System.out.println("등록된 연락처가 없습니다.");
 				} else {
-					for (Person person : people) {
+					for (PersonJih0316 person : people) {
 						System.out.println(person);
 					}
 				}
@@ -113,7 +113,7 @@ public class Jih0316Test {
 				System.out.print("검색할 이름을 입력하세요: ");
 				String searchName = scanner.nextLine();
 				boolean found = false;
-				for (Person person : people) {
+				for (PersonJih0316 person : people) {
 					if (person.getName().equals(searchName)) {
 						System.out.println(person);
 						found = true;
@@ -141,7 +141,7 @@ public class Jih0316Test {
 			} else if (choice == 5) {
 				// 랜덤 출력
 				if (people.size() > 0) {
-					Person randomPerson = people.get(random.nextInt(people.size()));
+					PersonJih0316 randomPerson = people.get(random.nextInt(people.size()));
 					System.out.println("\n랜덤 선택된 연락처: ");
 					System.out.println(randomPerson);
 				} else {
