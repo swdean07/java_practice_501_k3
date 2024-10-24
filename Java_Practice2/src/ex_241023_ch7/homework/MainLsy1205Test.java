@@ -1,6 +1,7 @@
 package ex_241023_ch7.homework;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import util.UtilLsy1205Test;
@@ -64,8 +65,46 @@ public class MainLsy1205Test {
 
 			} else if (check.equals("4")) {
 				System.out.println("삭제 기능을 구현 할 예정");
+				System.out.println("삭제할 이름 작성:>>");
+				String userName = scanner.next();
+				// found , 있다면 삭제 진행, 없다면, 사용자가 없습니다. 
+				boolean found = false;
+				PersonLsy1205Test removePerson = null;
+				// 임시 저장소에 있는 모든 사용자 검색.
+				for (PersonLsy1205Test person : persons) {
+					boolean result = person.getName().equals(userName);
+					System.out.println("result의 결과 : " + result);
+					if (result) {
+						removePerson = person;
+						found = true;
+						break;
+					}
+				}
+				if (found) {
+					persons.remove(removePerson);
+				} else {
+					System.out.println("사용자가 없습니다.");
+				}
+				
 			} else if (check.equals("5")) {
 				System.out.println("랜덤 기능을 구현 할 예정");
+				// 연락처에 사용자가 있다면, 
+				if(!persons.isEmpty()) {
+					Random random = new Random();
+					// 임시 메모리 공간에 등록된 크기만큼만해서, 3명 
+					// 0, 1,2 랜덤한 정수 선택하기. 
+					int randomIndexNumber = random.nextInt(persons.size());
+					System.out.println("선택된 랜덤 인덱스 숫자 확인: " + randomIndexNumber);
+					// 랜덤 인덱스 번호 이용해서, 해당 ArrayList 의 요소에 접근.
+					PersonLsy1205Test person = persons.get(randomIndexNumber);
+					String result = "랜덤으로 선택된 사용자, 이름 : " + person.getName() + ", 연락처 : " + person.getContact() + ", 등록 날짜 : "
+							+ person.getRegDate();
+					System.out.println(result);
+					
+				} else {
+					System.out.println("연락처 등록된 사용자가 없습니다.");
+				}
+				
 			} else if (check.equals("6")) {
 				System.out.println("프로그램 종료");
 				scanner.close();
