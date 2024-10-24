@@ -97,7 +97,23 @@ public class Hsw1009Main {
         }
     }
 
-    private static void randomContact() {
+    public static ArrayList<Contact> getContacts() {
+		return contacts;
+	}
+
+	public static void setContacts(ArrayList<Contact> contacts) {
+		Hsw1009Main.contacts = contacts;
+	}
+
+	public static Scanner getScanner() {
+		return scanner;
+	}
+
+	public static void setScanner(Scanner scanner) {
+		Hsw1009Main.scanner = scanner;
+	}
+
+	private static void randomContact() {
         if (contacts.isEmpty()) {
             System.out.println("등록된 연락처가 없습니다.");
             return;

@@ -1,11 +1,11 @@
 package ex_241023_ch7.homework;
 
-class Hsw1009Person {
+class Person {
     private String name;
     private String contact;
     private String registrationDate;
 
-    public void Person(String name, String contact, String registrationDate) {
+    public Person(String name, String contact, String registrationDate) {
         this.name = name;
         this.contact = contact;
         this.registrationDate = registrationDate;
@@ -19,7 +19,19 @@ class Hsw1009Person {
         return contact;
     }
 
-    public String getRegistrationDate() {
+    public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
+	public void setRegistrationDate(String registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+	public String getRegistrationDate() {
         return registrationDate;
     }
 
