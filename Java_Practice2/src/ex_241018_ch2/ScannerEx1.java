@@ -1,4 +1,4 @@
-package ex_241018_ch1;
+package ex_241018_ch2;
 
 import java.util.Scanner;
 
@@ -22,7 +22,8 @@ public class ScannerEx1 {
 		System.out.println("주말에 먹고싶은 메뉴 입력하기 : ");
 		String weekendMenu = scanner.next();
 		System.out.println("주말에 먹고 싶은 메뉴 : " + weekendMenu);
-		
+		// 반드시 , 사용 후 자원 반납하기. 
+		scanner.close();
 		
 
 	}
