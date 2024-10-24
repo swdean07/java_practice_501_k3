@@ -1,4 +1,4 @@
-package ex_241023_ch7;
+package ex_241023_ch7.homework;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -1,4 +1,4 @@
-package ex_241023_ch7;
+package ex_241023_ch7.homework;
 
 import java.util.ArrayList;
 import java.util.Random;
