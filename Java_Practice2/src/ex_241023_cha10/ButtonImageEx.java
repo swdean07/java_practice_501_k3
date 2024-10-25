@@ -14,11 +14,14 @@ public class ButtonImageEx extends JFrame {
 		  Container c = getContentPane(); 
 		  c.setLayout(new FlowLayout()); 
 		 
+		  // 이미지 폴더에서, 이미지 선택 후, 이미지 아이콘 타입으로 변경. 
 		  ImageIcon normalIcon = new ImageIcon("images/test11.png"); 
 		  ImageIcon rolloverIcon = new ImageIcon("images/test22.png"); 
 		  ImageIcon pressedIcon = new ImageIcon("images/test44.png"); 
 		 
-		  JButton btn = new JButton("call~~", normalIcon); 
+		  // 버튼에, 이미지 주입하기. 
+		  JButton btn = new JButton("call~~", normalIcon);
+		  // 버튼에 기본 기능중에서, 클릭시 나오는 그림.
 		  btn.setPressedIcon(pressedIcon); // pressedIcon용 이미지 등록 
 		  btn.setRolloverIcon(rolloverIcon); // rolloverIcon용 이미지 등록 
 		  
