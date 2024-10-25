@@ -1,5 +1,6 @@
 package ex_241023_ch7.homework2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
@@ -94,22 +95,30 @@ public class Lsy1205HashMapVersion {
 
 			} else if (check.equals("5")) {
 				System.out.println("랜덤 기능을 구현 할 예정");
-				// 연락처에 사용자가 있다면,
-				if (!persons.isEmpty()) {
-					Random random = new Random();
-					// 임시 메모리 공간에 등록된 크기만큼만해서, 3명
-					// 0, 1,2 랜덤한 정수 선택하기.
-					int randomIndexNumber = random.nextInt(persons.size());
-					System.out.println("선택된 랜덤 인덱스 숫자 확인: " + randomIndexNumber);
-					// 랜덤 인덱스 번호 이용해서, 해당 ArrayList 의 요소에 접근.
-					PersonLsy1205Test person = persons.get(randomIndexNumber);
-					String result = "랜덤으로 선택된 사용자, 이름 : " + person.getName() + ", 연락처 : " + person.getContact()
-							+ ", 등록 날짜 : " + person.getRegDate();
-					System.out.println(result);
-
-				} else {
-					System.out.println("연락처 등록된 사용자가 없습니다.");
+				// HashMap , 전체 인원수 파악. 
+				int merberTotal = persons.size();
+				// HashMap의 키(문자열)들을 , 순서가 있는 ArrayList 로 변환을 함. 
+				ArrayList<String> nameList = new ArrayList<String>();
+				
+				Set<String> keys = persons.keySet(); // 모든 키를 Set 컬렉션에 받아옴
+				Iterator<String> it = keys.iterator(); // Set에 접근하는 Iterator 리턴
+				while (it.hasNext()) {
+					String key = it.next(); // 키, 등록된 사용자의 이름.
+				// HashMap을 전체 다 검색해서, 키만 따로 -> ArrayList 등록. 
+					nameList.add(key);
 				}
+				// Random 클래스 이용해서, HashMap 크기 만큼해서, 랜덤한 정수 선택. 
+				Random random = new Random();
+				// merberTotal 예) 5명, 0 이상 5미만의 정수를 랜덤하게 추출. 
+				int randomPickNumber = random.nextInt(merberTotal);
+				String randomPickName = nameList.get(randomPickNumber);
+				//출력하기. 
+				PersonLsy1205Test person= persons.get(randomPickName);
+				System.out.println("랜덤하게 선택된 유저.");
+				System.out.println("(이름: " + person.getName() + " , 연락처 : " + person.getContact() + ", 등록날짜 : "
+						+ person.getRegDate() + " ) ");
+				
+				
 
 			} else if (check.equals("6")) {
 				System.out.println("프로그램 종료");
