@@ -98,10 +98,14 @@ public class FlyingTextWithThreadEx3 extends JFrame {
 			}
 		} // keyReleased
 		
+		// 스레드를 이용해서, 각각의 동작을 동시에 수행하는 것처럼 보임. 
+		
 		private void startMovementThread() {
+			// 익명 클래스 형식 구현 -> 람다식으로 구현하는 방법. 
 			Thread movementThread = new Thread(() -> {
 				while (true) {
 					try {
+						// 50 ms 지연 주기.
 						Thread.sleep(50); //50 ms 간격
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -121,6 +125,7 @@ public class FlyingTextWithThreadEx3 extends JFrame {
 					}
 				}
 			});
+			// 스레드 설정 후, 여기에서 실행. 
 			movementThread.start();
 		}
 		
