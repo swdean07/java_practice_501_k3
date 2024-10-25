@@ -29,34 +29,29 @@ public class MouseListenerEx extends JFrame {
 			int y = e.getY(); // 마우스의 클릭 좌표 y
 			la.setLocation(x, y); // (x,y) 위치로 레이블 이동
 		}
-
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
-
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
-
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
-
 		@Override
 		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
-
-		
 	} // Listener
+
 	public static void main(String[] args) {
 		new MouseListenerEx();
-	}
-}
+	} // main 
+} // 마우스 리스너 클래스. 
+
+
+
+
+
+
+
+
