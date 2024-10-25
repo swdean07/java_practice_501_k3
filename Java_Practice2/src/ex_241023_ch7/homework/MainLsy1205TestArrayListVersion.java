@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import util.PersonLsy1205Test;
 import util.UtilLsy1205Test;
 
-public class MainLsy1205Test {
+public class MainLsy1205TestArrayListVersion {
 
 	// 함수의 정의 부분, 소괄호 안에 있는 매개변수(받는 변수) 정의.
 	public static void contactProgram(Scanner scanner, ArrayList<PersonLsy1205Test> persons) {
