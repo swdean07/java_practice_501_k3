@@ -17,10 +17,14 @@ public class FlyingTextEx extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Container c = getContentPane();
+		// 배치 관리자 설정 안함, 사용자가 직접 위치를 지정 가능. 
 		c.setLayout(null);
+		// Container 패널에 키 이벤트 리스너 설정.
 		c.addKeyListener(new MyKeyListener());
 
+		// 라벨의 초기 위칫값
 		la.setLocation(50, 50);
+		// 라벨의 초기 크기
 		la.setSize(100, 20);
 		c.add(la);
 
