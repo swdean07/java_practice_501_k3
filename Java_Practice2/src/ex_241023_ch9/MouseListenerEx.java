@@ -54,8 +54,9 @@ public class MouseListenerEx extends JFrame {
 
 		}
 
-		public static void main(String[] args) {
-			new MouseListenerEx();
-		}
+		
+	} // Listener
+	public static void main(String[] args) {
+		new MouseListenerEx();
 	}
 }
