@@ -17,6 +17,9 @@ public class LabelEx extends JFrame {
 		JLabel textLabel = new JLabel("제임스 고슬링 입니더!");
 		ImageIcon img = new ImageIcon("images/test11.png");
 		
+		// 주의사항, 이미지 폴더 경로는, 자바프로젝트 바로 밑에 만들기. 
+		// 
+		
 		JLabel imageLabel = new JLabel(img);
 		ImageIcon icon = new ImageIcon("images/test22.png");
 		JLabel label = new JLabel("커피한잔 하실래예, 전화주이소", icon, SwingConstants.CENTER);
