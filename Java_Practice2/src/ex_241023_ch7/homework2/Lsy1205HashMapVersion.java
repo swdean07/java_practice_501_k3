@@ -76,24 +76,21 @@ public class Lsy1205HashMapVersion {
 				System.out.println("삭제 기능을 구현 할 예정");
 				System.out.println("삭제할 이름 작성:>>");
 				String userName = scanner.next();
-				// found , 있다면 삭제 진행, 없다면, 사용자가 없습니다.
-				boolean found = false;
-				PersonLsy1205Test removePerson = null;
-				// 임시 저장소에 있는 모든 사용자 검색.
-//				for (PersonLsy1205Test person : persons) {
-//					boolean result = person.getName().equals(userName);
-//					System.out.println("result의 결과 : " + result);
-//					if (result) {
-//						removePerson = person;
-//						found = true;
-//						break;
-//					}
-//				}
-				if (found) {
-					persons.remove(removePerson);
-				} else {
-					System.out.println("사용자가 없습니다.");
+				// keys , HashMap에 등록된 모든 키 정보
+				Set<String> keys = persons.keySet(); // 모든 키를 Set 컬렉션에 받아옴
+				// 반복이 구현 가능한 형태로 변경 -> 가상테이블 표현. 0행에 대기중. 커서 같이.
+				Iterator<String> it = keys.iterator(); // Set에 접근하는 Iterator 리턴
+				while (it.hasNext()) {
+					String key = it.next(); // 키, 등록된 사용자의 이름.
+
+					if (key.equals(userName)) {
+						System.out.println(key +"님 삭제 완료");
+						persons.remove(key);
+
+					}
+
 				}
+				
 
 			} else if (check.equals("5")) {
 				System.out.println("랜덤 기능을 구현 할 예정");
