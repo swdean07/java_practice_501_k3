@@ -22,7 +22,6 @@ public class JHJ_Person {
 //	}
 //
 //
-//
 //	public void setName(String name) {
 //		this.name = name;
 //	}

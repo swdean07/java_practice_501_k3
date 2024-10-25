@@ -11,7 +11,7 @@ import java.util.Set;
 public class JHJ_Hash {
 
 	public static void main(String[] args) {
-//		ArrayList<JHJ_Person> ArrList = new ArrayList<>();
+
 		HashMap<String, JHJ_Person> dic = new HashMap<String, JHJ_Person>();
 
 		Scanner scanner = new Scanner(System.in);
@@ -48,39 +48,31 @@ public class JHJ_Hash {
 					Iterator<String> it = keys.iterator();
 					while (it.hasNext()) {
 						String key = it.next();
-						JHJ_Person value = dic.get(JHJ_Person(key));
 						System.out.println("이름: " + key);
 						dic.get(key).displayPersonInfo();
-//                      
 					}
-
-
 				}
 				break;
 
 			case 3:
 				System.out.print("검색할 이름 입력: ");
 				String search = scanner.nextLine();
-
-				boolean found = false;
 				JHJ_Person kor = dic.get(search);
+				
 				if (kor == null)
 					System.out.println("해당 이름의 연락처가 없습니다.");
 				else {
 					System.out.println("이름: " + search);
 					dic.get(search).displayPersonInfo();
 				}
-
-
 				break;
 //					
 
 			case 4:
 				System.out.print("삭제할 이름 입력: ");
 				String deleteName = scanner.nextLine();
-//				boolean removed = ArrList.removeIf(person -> person.getName().equalsIgnoreCase(deleteName));
 				JHJ_Person dname = dic.remove(deleteName);
-//				System.out.println("연락처가 삭제되었습니다.");
+
 
 				if (dname != null) {
 					System.out.println("연락처가 삭제되었습니다.");
@@ -90,18 +82,13 @@ public class JHJ_Hash {
 				break;
 
 			case 5:
-
 				if (!dic.isEmpty()) {
-
 					ArrayList<String> keysList = new ArrayList<>(dic.keySet());
-
 					int randomIndex = random.nextInt(keysList.size());
-
-					String randomKey = keysList.get(randomIndex);
+					String randomKey = keysList.get(randomIndex); 
 
 					System.out.println("이름: " + randomKey);
 					dic.get(randomKey).displayPersonInfo();
-//					dic.get(randomIndex).displayPersonInfo();
 				} else {
 					System.out.println("등록된 연락처가 없습니다.");
 				}
@@ -116,11 +103,6 @@ public class JHJ_Hash {
 				System.out.println("올바른 번호를 입력하세요.");
 			}
 		}
-	}
-
-	private static Object JHJ_Person(String key) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
