@@ -13,7 +13,7 @@ public class ListEx extends JFrame {
 			"blackberry" };
 
 	private ImageIcon[] images = { new ImageIcon("images/test11.png"), new ImageIcon("images/test22.png"),
-			new ImageIcon("images/test44.jpg"), new ImageIcon("images/test11.png") };
+			new ImageIcon("images/test44.png"), new ImageIcon("images/test11.png") };
 
 	public ListEx() {
 		setTitle("리스트 만들기 예제");
@@ -21,11 +21,12 @@ public class ListEx extends JFrame {
 		Container c = getContentPane();
 		c.setLayout(new FlowLayout());
 
-		//
+		// 문자열 배열 추가
 		JList<String> strList = new JList<String>(fruits);
 		// 패널에 추가.
 		c.add(strList);
 
+		// 이미지들을 추가 
 		JList<ImageIcon> imageList = new JList<ImageIcon>();
 		imageList.setListData(images);
 		// 패널에 추가.
