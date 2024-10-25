@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 
 	public class CheckBoxItemEventEx extends JFrame {
 		
-		// 인스턴스 멤버
+		// 인스턴스 멤버, 전역으로 사용이 되고 있다. 
 		private JCheckBox[] fruits = new JCheckBox[3];
 		private String[] names = { "사과", "배", "체리" };
 		private JLabel sumLabel;
@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 			c.setLayout(new FlowLayout());
 			
 			// 패널에 라벨 붙이기 
+//			JLabel jLabel = new JLabel("사과 100원, 배 500원, 체리 2000원")
 			c.add(new JLabel("사과 100원, 배 500원, 체리 2000원"));
 			
 			//이벤트 처리기 작업.
