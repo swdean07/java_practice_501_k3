@@ -1,4 +1,4 @@
-package ex_241023_ch7.homework;
+package util;
 
 public class PersonLsy1205Test {
 
