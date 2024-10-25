@@ -20,7 +20,7 @@ public class FlyingTextWithThreadEx3 extends JFrame {
 		// 배치 관리자 설정 안함, 사용자가 직접 위치를 지정 가능.
 		c.setLayout(null);
 		// Container 패널에 키 이벤트 리스너 설정.
-		c.addKeyListener(new MyKeyListener());
+		c.addKeyListener(new MyKeyListener(la));
 
 		// 라벨의 초기 위칫값
 		la.setLocation(50, 50);
@@ -36,15 +36,22 @@ public class FlyingTextWithThreadEx3 extends JFrame {
 	}
 
 	class MyKeyListener extends KeyAdapter {
-
+		// 이동할 라벨 추가. 
+		private JLabel la; 
+		
 		// 움직임의 상태 변수,
 		private volatile boolean upPressed = false;
 		private volatile boolean downPressed = false;
 		private volatile boolean leftPressed = false;
 		private volatile boolean rightPressed = false;
 
-		// Thread 동작 하기 위한 변수.
-		private Thread moveThread;
+		// 생성자 추가. 1)라벨 변수 받고, 2) 스레드 실행 시키기 
+		public MyKeyListener (JLabel la) {
+			this.la = la;
+			//스레드 시작. 
+			startMovementThread();
+		}
+		
 
 		public void keyPressed(KeyEvent e) {
 
@@ -90,6 +97,33 @@ public class FlyingTextWithThreadEx3 extends JFrame {
 				break;
 			}
 		} // keyReleased
+		
+		private void startMovementThread() {
+			Thread movementThread = new Thread(() -> {
+				while (true) {
+					try {
+						Thread.sleep(50); //50 ms 간격
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					// 키 상태에 따른 JLabel 이동. 
+					if (upPressed) {
+						la.setLocation(la.getX(),la.getY()-10);
+					}
+					if (downPressed) {
+						la.setLocation(la.getX(),la.getY()+10);
+					}
+					if (leftPressed) {
+						la.setLocation(la.getX()-10,la.getY());
+					}
+					if (rightPressed) {
+						la.setLocation(la.getX()+10,la.getY());
+					}
+				}
+			});
+			movementThread.start();
+		}
+		
 	} // MyKeyListener
 
 	public static void main(String[] args) {
