@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
 public class RadioButtonEx extends JFrame {
+	// 인스턴스 멤버, 전역으로 사용이 되고 있다. 
 	private JRadioButton[] fruits = new JRadioButton[3];
 	private String[] names = { "사과", "배", "체리" };
 	private JLabel selectedFruitLabel;
