@@ -16,7 +16,7 @@ public class ButtonImageEx extends JFrame {
 		 
 		  ImageIcon normalIcon = new ImageIcon("images/test11.png"); 
 		  ImageIcon rolloverIcon = new ImageIcon("images/test22.png"); 
-		  ImageIcon pressedIcon = new ImageIcon("images/test44.jpg"); 
+		  ImageIcon pressedIcon = new ImageIcon("images/test44.png"); 
 		 
 		  JButton btn = new JButton("call~~", normalIcon); 
 		  btn.setPressedIcon(pressedIcon); // pressedIcon용 이미지 등록 
