@@ -23,7 +23,7 @@ public class GraphicsDrawImageEx1 extends JFrame {
 
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			g.drawImage(img, 20, 20, this);
+			g.drawImage(img, 20, 20,getWidth(),getHeight(), this);
 		}
 	}
 
