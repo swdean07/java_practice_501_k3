@@ -81,7 +81,8 @@ public class WordTestLsy1205Test extends JFrame {
 		inputPanel.add(addButton);
 		
 		// 랜덤으로 출력해주는 버튼 
-		inputPanel.add(new JButton("랜덤 단어 표시"));
+		JButton randomButton = new JButton("랜덤 단어 뽑기");
+		inputPanel.add(randomButton);
 		
 		//==================================================
 		
@@ -104,8 +105,10 @@ public class WordTestLsy1205Test extends JFrame {
 		// 맵에 추가할  예정. 
 		addButton.addActionListener(e -> addWord());
 		
-		setVisible(true);
+		// 랜덤으로 보여주는 기능 버튼에 리스너 추가하기. 
+		randomButton.addActionListener(e -> showRandomWord());
 		
+		setVisible(true);
 		
 	}
 	
@@ -178,6 +181,32 @@ public class WordTestLsy1205Test extends JFrame {
 					"입력오류: 모두 입력해주세요", JOptionPane.ERROR_MESSAGE);
 		}
 		
+	} // addWord()
+	
+	// 랜덤 기능 
+	public void showRandomWord() {
+		// 맵에, 단어가 추가 안된 상황,
+		if(wordLabelMap.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "단어가 입력 안됨",
+					"먼저, 단어를 추가해주세요", JOptionPane.ERROR_MESSAGE);
+			return;
+		} 
+		
+		// 랜덤하게 하나만 출력, 나머지 단어는 모두 가리기. 
+		// wordLabelMap, key : String, value: 각 단어가 표시된 라벨 
+		for (JLabel jLabel : wordLabelMap.values()) {
+			jLabel.setVisible(false);
+		}
+		
+		// 랜덤하게 단어 하나 선택. 
+		// 맵 -> 리스트 형식으로 변환.
+		// wordLabelMap.keySet(), 영어 단어 , car, -> car 를 출력하는 라벨을 생성.
+		List<String> words = new ArrayList<String>(wordLabelMap.keySet());
+		// words 에는 맵에 등록된 영어 단어의 영어만 전부다 리스트로 변환. 
+		String randomWord = words.get(random.nextInt(words.size()));
+		
+		// 선택된 단어만 보이게 하는 설정. 
+		wordLabelMap.get(randomWord).setVisible(true);
 	}
 	
 	public static void main(String[] args) {
