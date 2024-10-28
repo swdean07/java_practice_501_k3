@@ -40,7 +40,7 @@ public class WordTestLsy1205Test extends JFrame {
 		// 창 제목 
 		setTitle("단어 프로그램 V 1.0.0");
 		// 창 사이즈. 기본 크기. 
-		setSize(400, 300);
+		setSize(600, 300);
 		// 창의 닫기를 클릭시, 정상 종료. 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -173,7 +173,9 @@ public class WordTestLsy1205Test extends JFrame {
 		// 영어 , 단어 뜻을 입력을 안될 경우
 		//4
 		else {
-			
+			// 자바 버전에서, 간단한 다이얼 로그 창, 경고창 alert 같은 ui 사용 
+			JOptionPane.showMessageDialog(null, "단어와 뜻을 모두 입력해주세요.",
+					"입력오류: 모두 입력해주세요", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}
