@@ -20,8 +20,10 @@ public class VibratingFrame extends JFrame implements Runnable {
 		getContentPane().addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				if (th != null && th.isAlive()) {
+					// 해당 스레드 종료
 				th.interrupt();
 				} else {
+					// 다시 클릭 하면, 새롭게 스레드 인스턴스 생성.
 					th = new Thread(VibratingFrame.this);
 					th.start(); // 진동 시작
 				}
@@ -30,6 +32,7 @@ public class VibratingFrame extends JFrame implements Runnable {
 		// 방법2, Thread 클래스 생성자에, 인터페이스 구현한 클래스의 인스턴스 주입. 
 		th = new Thread(this); // 진동하는 스레드 객체 생성
 		// 스레드 동작 시작.
+		// 최초 스레드 동작. 
 		th.start(); // 진동 시작
 	}
 
