@@ -15,15 +15,15 @@ public class MenuEx extends JFrame {
 	}
 
 	public void createMenu() {
-		// 메뉴바
+		// 1 메뉴바
 		JMenuBar mb = new JMenuBar();
-		// 메인 메뉴
+		// 2 메인 메뉴
 		JMenu screenMenu = new JMenu("Screen");
-		// 메인 메뉴 -> 하위 메뉴
+		// 메인 메뉴 -> 3 하위 메뉴
 		screenMenu.add(new JMenuItem("Load"));
 		screenMenu.add(new JMenuItem("Hide"));
 		screenMenu.add(new JMenuItem("ReShow"));
-		// 구분선 addSeparator
+		// 4 구분선 addSeparator
 		screenMenu.addSeparator();
 		// 메인 메뉴 -> 하위 메뉴
 		screenMenu.add(new JMenuItem("Exit"));

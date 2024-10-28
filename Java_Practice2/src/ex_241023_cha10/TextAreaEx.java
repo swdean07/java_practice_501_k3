@@ -20,12 +20,14 @@ public class TextAreaEx extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
 		c.setLayout(new FlowLayout());
-		
+
+		//
 		c.add(new JLabel("입력 후 <Enter> 키를 입력하세요"));
 		c.add(tf);
+		// JTextArea 스크롤 추가 필요함. 
 		c.add(new JScrollPane(ta));
-		
-		//이벤트 처리기. 방식, 익명클래스로 이용.
+
+		// 이벤트 처리기. 방식, 익명클래스로 이용.
 		tf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JTextField t = (JTextField) e.getSource();
