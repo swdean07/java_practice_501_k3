@@ -3,116 +3,133 @@ package ex_241023_ch9.homework;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 
 public class kdh_0222_vocab extends JFrame {
-	private JLabel wordLabel1, wordLabel2, wordLabel3, wordLabel4;
-	private boolean isWord1Clicked = false, isWord2Clicked = false, isWord3Clicked = false, isWord4Clicked = false;
+    private ArrayList<JLabel> wordLabels; // 단어를 표시하는 라벨 리스트
+    private ArrayList<String> wordList; // 단어 리스트
+    private ArrayList<String> meaningList; // 뜻 리스트
+    private int pageIndex = 0; // 페이지 인덱스
 
-	public kdh_0222_vocab() {
-		setTitle("Vocabulary App");
-		setSize(400, 200);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new GridLayout(2, 2));
-		initUI();
-	}
+    public kdh_0222_vocab() {
+        setTitle("Vocabulary App");
+        setSize(400, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(4, 2)); // 4행 2열 레이아웃 설정
+        wordLabels = new ArrayList<>();
+        wordList = new ArrayList<>();
+        meaningList = new ArrayList<>();
+        initUI();
+    }
 
-	private void initUI() {
-		wordLabel1 = new JLabel("apple", SwingConstants.CENTER);
-		wordLabel2 = new JLabel("house", SwingConstants.CENTER);
-		wordLabel3 = new JLabel("banana", SwingConstants.CENTER);
-		wordLabel4 = new JLabel("ice", SwingConstants.CENTER);
+    private void initUI() {
+        // 8개의 빈 라벨 초기화 및 클릭 이벤트 추가
+        for (int i = 0; i < 8; i++) {
+            JLabel label = new JLabel("", SwingConstants.CENTER);
+            label.setFont(new Font("Arial", Font.PLAIN, 18));
+            label.setOpaque(true);
+            label.setBackground(Color.LIGHT_GRAY);
+            label.setFont(new Font("Malgun Gothic", Font.PLAIN, 18));
+            label.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    toggleWord(label);
+                }
+            });
+            wordLabels.add(label);
+            add(label);
+        }
 
-		wordLabel1.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
-		wordLabel2.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
-		wordLabel3.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
-		wordLabel4.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
+        // 단어 추가 버튼
+        JButton addButton = new JButton("단어 추가");
+        addButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                addWord();
+            }
+        });
 
-		wordLabel1.setOpaque(true);
-		wordLabel2.setOpaque(true);
-		wordLabel3.setOpaque(true);
-		wordLabel4.setOpaque(true);
+        // 다음 페이지 버튼
+        JButton nextPageButton = new JButton("다음 페이지");
+        nextPageButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                nextPage();
+            }
+        });
 
-		wordLabel1.setBackground(Color.LIGHT_GRAY);
-		wordLabel2.setBackground(Color.LIGHT_GRAY);
-		wordLabel3.setBackground(Color.LIGHT_GRAY);
-		wordLabel4.setBackground(Color.LIGHT_GRAY);
+        JPanel panel = new JPanel();
+        panel.add(addButton);
+        panel.add(nextPageButton);
+        add(panel);
+    }
 
-		wordLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				toggleWord1();
-			}
-		});
+    // 단어 추가 메서드
+    private void addWord() {
+        String word = JOptionPane.showInputDialog(this, "영단어를 입력하세요 :");
+        String meaning = JOptionPane.showInputDialog(this, "뜻을 입력하세요 :");
 
-		wordLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				toggleWord2();
-			}
-		});
-		wordLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				toggleWord3();
-			}
-		});
-		wordLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				toggleWord4();
-			}
-		});
+        if (word != null && meaning != null) {
+            wordList.add(word);
+            meaningList.add(meaning);
+            displayPage();
+        }
+    }
 
-		add(wordLabel1);
-		add(wordLabel2);
-		add(wordLabel3);
-		add(wordLabel4);
-	}
+    // 페이지 표시 메서드
+    private void displayPage() {
+        int start = pageIndex * 8;
+        int end = Math.min(start + 8, wordList.size());
 
-	private void toggleWord1() {
-		if (isWord1Clicked) {
-			wordLabel1.setText("apple");
-		} else {
-			wordLabel1.setText("사과");
-		}
-		isWord1Clicked = !isWord1Clicked;
-	}
+        // 라벨 초기화
+        for (int i = 0; i < 8; i++) {
+            if (i + start < end) {
+                wordLabels.get(i).setText(wordList.get(i + start));
+                wordLabels.get(i).setName("word:" + (i + start));
+            } else {
+                wordLabels.get(i).setText("");
+                wordLabels.get(i).setName("");
+            }
+        }
+    }
 
-	private void toggleWord2() {
-		if (isWord2Clicked) {
-			wordLabel2.setText("house");
-		} else {
-			wordLabel2.setText("집");
-		}
-		isWord2Clicked = !isWord2Clicked;
-	}
+    // 다음 페이지로 이동
+    private void nextPage() {
+        if ((pageIndex + 1) * 8 < wordList.size()) {
+            pageIndex++;
+            displayPage();
+        }
+    }
 
-	private void toggleWord3() {
-		if (isWord3Clicked) {
-			wordLabel3.setText("banana");
-		} else {
-			wordLabel3.setText("바나나");
-		}
-		isWord3Clicked = !isWord3Clicked;
-	}
+    // 단어 토글 메서드
+    private void toggleWord(JLabel label) {
+        String labelName = label.getName();
+        if (labelName != null && labelName.startsWith("word:")) {
+            int index = Integer.parseInt(labelName.split(":")[1]);
+            String currentText = label.getText();
+            if (currentText.equals(wordList.get(index))) {
+                label.setText(meaningList.get(index)); // 뜻으로 변경
+            } else {
+                label.setText(wordList.get(index)); // 영어 단어로 복구
+            }
+        }
+    }
 
-	private void toggleWord4() {
-		if (isWord4Clicked) {
-			wordLabel4.setText("ice");
-		} else {
-			wordLabel4.setText("얼음");
-		}
-		isWord4Clicked = !isWord4Clicked;
-	}
-
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> {
-			kdh_0222_vocab app = new kdh_0222_vocab();
-			app.setVisible(true);
-		});
-	}
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            kdh_0222_vocab app = new kdh_0222_vocab();
+            app.setVisible(true);
+        });
+    }
 }
-
 
