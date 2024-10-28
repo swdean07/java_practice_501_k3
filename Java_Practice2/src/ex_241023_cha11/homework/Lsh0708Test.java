@@ -78,17 +78,16 @@ public class Lsh0708Test extends JFrame {
 				Point e = vEnd.elementAt(i);
 
 				g.drawLine((int) s.getX(), (int) s.getY(), (int) e.getX(), (int) e.getY());
-
-				for (int j = 0; j < RStart.size(); j++) {
-					Point Rs = RStart.elementAt(j);
-					Point Re = REnd.elementAt(j);
-					int x = Math.min(Rs.x, Re.x);
-					int y = Math.min(Rs.y, Re.y);
-					int width = Math.abs(Rs.x - Re.x);
-					int height = Math.abs(Rs.y - Re.y);
-					g.drawRect(x, y, width, height); // 타원 그리기
-				}
-
+			}
+			
+			for (int j = 0; j < RStart.size(); j++) {
+				Point Rs = RStart.elementAt(j);
+				Point Re = REnd.elementAt(j);
+				int x = Math.min(Rs.x, Re.x);
+				int y = Math.min(Rs.y, Re.y);
+				int width = Math.abs(Rs.x - Re.x);
+				int height = Math.abs(Rs.y - Re.y);
+				g.drawRect(x, y, width, height); // 타원 그리기
 			}
 
 		}
