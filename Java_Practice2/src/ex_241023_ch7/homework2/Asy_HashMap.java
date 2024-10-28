@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
+import ex_241023_ch7.homework.Asy_Person;
+
 public class Asy_HashMap {
 	private static HashMap<String, Asy_Person> contactList = new HashMap<>();
 

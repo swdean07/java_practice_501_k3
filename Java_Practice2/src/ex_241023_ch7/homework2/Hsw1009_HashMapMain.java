@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Hsw1009Main {
-    private static HashMap<String, Contact> contacts = new HashMap<String, Contact>();
+public class Hsw1009_HashMapMain {
+    private static HashMap<String, ContactHsw1009> contacts = new HashMap<String, ContactHsw1009>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -63,7 +63,7 @@ public class Hsw1009Main {
         
 
         // HashMap에 이름을 키로 하고 Contact 객체를 값으로 저장
-        Contact contact = new Contact(name, contactNumber, registrationDate1);
+        ContactHsw1009 contact = new ContactHsw1009(name, contactNumber, registrationDate1);
         contacts.put(name, contact);
 
         System.out.println("연락처가 등록되었습니다.");
@@ -76,7 +76,7 @@ public class Hsw1009Main {
             return;
         }
         // HashMap의 값들 출력
-        for (Contact contact : contacts.values()) {
+        for (ContactHsw1009 contact : contacts.values()) {
             System.out.println(contact);
         }
     }
@@ -85,7 +85,7 @@ public class Hsw1009Main {
     private static void searchContact() {
         System.out.print("검색할 이름: ");
         String name = scanner.nextLine();
-        Contact contact = contacts.get(name);
+        ContactHsw1009 contact = contacts.get(name);
         
         if (contact != null) {
             System.out.println(contact);
@@ -120,12 +120,12 @@ public class Hsw1009Main {
     }
 }
 
-class Contact {
+class ContactHsw1009 {
     private String name;
     private String contactNumber;
     private String registrationDate;
 
-    public Contact(String name, String contactNumber, String registrationDate) {
+    public ContactHsw1009(String name, String contactNumber, String registrationDate) {
         this.name = name;
         this.contactNumber = contactNumber;
         this.registrationDate = registrationDate;

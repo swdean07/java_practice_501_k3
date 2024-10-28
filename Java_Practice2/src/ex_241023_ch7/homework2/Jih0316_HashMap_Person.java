@@ -1,4 +1,4 @@
-package ex_241023_ch7.homework;
+package ex_241023_ch7.homework2;
 
 public class Jih0316_HashMap_Person {
 	private String name;
