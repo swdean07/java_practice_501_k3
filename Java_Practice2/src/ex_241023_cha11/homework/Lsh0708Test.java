@@ -17,7 +17,7 @@ import javax.swing.JRadioButton;
 public class Lsh0708Test extends JFrame {
 	private JRadioButton Jline;
 	private JRadioButton JRect;
-	private JRadioButton JOvar;
+	private JRadioButton JOval;
 
 	public Lsh0708Test() {
 		setTitle("마우스로 여러 개의 선  그리기 예제");
@@ -28,13 +28,13 @@ public class Lsh0708Test extends JFrame {
 		ButtonGroup g = new ButtonGroup(); // 버튼 그룹 객체 생성
 		Jline = new JRadioButton("선", true);
 		JRect = new JRadioButton("사각형");
-		JOvar = new JRadioButton("타원");
+		JOval = new JRadioButton("타원");
 		g.add(Jline);
 		g.add(JRect);
-		g.add(JOvar);
+		g.add(JOval);
 		c.add(Jline);
 		c.add(JRect);
-		c.add(JOvar);
+		c.add(JOval);
 		setSize(300, 300);
 		setVisible(true);
 
@@ -57,7 +57,7 @@ public class Lsh0708Test extends JFrame {
 						vStart.add(startP);
 					} else if (JRect.isSelected()) {
 						RStart.add(startP);
-					} else if (JOvar.isSelected()) {
+					} else if (JOval.isSelected()) {
 						OStart.add(startP);
 					}
 				}
@@ -68,7 +68,7 @@ public class Lsh0708Test extends JFrame {
 						vEnd.add(endP);
 					} else if (JRect.isSelected()) {
 						REnd.add(endP);
-					} else if (JOvar.isSelected()) {
+					} else if (JOval.isSelected()) {
 						OEnd.add(endP);
 					}
 
