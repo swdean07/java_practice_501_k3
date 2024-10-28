@@ -10,6 +10,7 @@ public class paintJPanelEx extends JFrame {
 	public paintJPanelEx() {
 		setTitle("JPanel의 paintComponent() 예제");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// 기본 패널에, 사용자가 직접 정의한 패널을 붙이는 코드
 		setContentPane(new MyPanel());
 		setSize(250, 200);
 		setVisible(true);
@@ -19,6 +20,7 @@ public class paintJPanelEx extends JFrame {
 	class MyPanel extends JPanel {
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
+			
 			g.setColor(Color.BLUE); // 파란색 선택
 			g.drawRect(10, 10, 50, 50);
 			g.drawRect(50, 50, 50, 50);
@@ -31,3 +33,8 @@ public class paintJPanelEx extends JFrame {
 		new paintJPanelEx();
 	}
 }
+
+
+
+
+
