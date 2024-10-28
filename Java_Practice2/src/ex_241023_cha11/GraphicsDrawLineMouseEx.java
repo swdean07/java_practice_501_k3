@@ -30,11 +30,13 @@ public class GraphicsDrawLineMouseEx extends JFrame {
 		public MyPanel() {
 			addMouseListener(new MouseAdapter() {
 				public void mousePressed(MouseEvent e) {
+					// 첫 클릭한 공간의 x,y 좌표를 , 벡터(리스트)에 추가
 					Point startP = e.getPoint();
 					vStart.add(startP);
 				}
 
 				public void mouseReleased(MouseEvent e) {
+					// 첫 클릭해서, 드래그 후 마우스를 놓을 때 좌표ㅕ, 벡터(리스트)에 추가
 					Point endP = e.getPoint();
 					vEnd.add(endP);
 
@@ -44,9 +46,11 @@ public class GraphicsDrawLineMouseEx extends JFrame {
 			});
 		}
 
+		// 크기나, repaint() 호출 될 때마다, 계속 다시 그려주는 역할. 
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.setColor(Color.BLUE);
+			
 			for (int i = 0; i < vStart.size(); i++) {
 				Point s = vStart.elementAt(i);
 				Point e = vEnd.elementAt(i);
@@ -55,3 +59,8 @@ public class GraphicsDrawLineMouseEx extends JFrame {
 		}
 	}
 }
+
+
+
+
+
