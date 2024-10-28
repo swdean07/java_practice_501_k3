@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -18,6 +17,7 @@ import javax.swing.JRadioButton;
 public class Lsh0708Test extends JFrame {
 	private JRadioButton Jline;
 	private JRadioButton JRect;
+	private JRadioButton JOvar;
 
 	public Lsh0708Test() {
 		setTitle("마우스로 여러 개의 선  그리기 예제");
@@ -28,10 +28,13 @@ public class Lsh0708Test extends JFrame {
 		ButtonGroup g = new ButtonGroup(); // 버튼 그룹 객체 생성
 		Jline = new JRadioButton("선", true);
 		JRect = new JRadioButton("사각형");
+		JOvar = new JRadioButton("타원");
 		g.add(Jline);
 		g.add(JRect);
+		g.add(JOvar);
 		c.add(Jline);
 		c.add(JRect);
+		c.add(JOvar);
 		setSize(300, 300);
 		setVisible(true);
 
@@ -42,6 +45,8 @@ public class Lsh0708Test extends JFrame {
 		private Vector<Point> vEnd = new Vector<Point>();
 		private Vector<Point> RStart = new Vector<Point>();
 		private Vector<Point> REnd = new Vector<Point>();
+		private Vector<Point> OStart = new Vector<Point>();
+		private Vector<Point> OEnd = new Vector<Point>();
 
 		public MyPanel() {
 			addMouseListener(new MouseAdapter() {
@@ -52,6 +57,8 @@ public class Lsh0708Test extends JFrame {
 						vStart.add(startP);
 					} else if (JRect.isSelected()) {
 						RStart.add(startP);
+					} else if (JOvar.isSelected()) {
+						OStart.add(startP);
 					}
 				}
 
@@ -61,6 +68,8 @@ public class Lsh0708Test extends JFrame {
 						vEnd.add(endP);
 					} else if (JRect.isSelected()) {
 						REnd.add(endP);
+					} else if (JOvar.isSelected()) {
+						OEnd.add(endP);
 					}
 
 					// 패널의 다시 그리기를 요청한다.
@@ -79,7 +88,6 @@ public class Lsh0708Test extends JFrame {
 
 				g.drawLine((int) s.getX(), (int) s.getY(), (int) e.getX(), (int) e.getY());
 			}
-			
 			for (int j = 0; j < RStart.size(); j++) {
 				Point Rs = RStart.elementAt(j);
 				Point Re = REnd.elementAt(j);
@@ -88,6 +96,15 @@ public class Lsh0708Test extends JFrame {
 				int width = Math.abs(Rs.x - Re.x);
 				int height = Math.abs(Rs.y - Re.y);
 				g.drawRect(x, y, width, height); // 타원 그리기
+			}
+			for (int k = 0; k < OStart.size(); k++) {
+				Point Os = OStart.elementAt(k);
+				Point Oe = OEnd.elementAt(k);
+				int x = Math.min(Os.x, Oe.x);
+				int y = Math.min(Os.y, Oe.y);
+				int width = Math.abs(Os.x - Oe.x);
+				int height = Math.abs(Os.y - Oe.y);
+				g.drawOval(x, y, width, height); // 타원 그리기
 			}
 
 		}
