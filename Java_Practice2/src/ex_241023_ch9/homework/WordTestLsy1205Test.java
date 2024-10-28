@@ -68,18 +68,20 @@ public class WordTestLsy1205Test extends JFrame {
 		// 1. 라벨 붙이기, 화면, 이벤트 핸들러, 보통 1회용으로 많이 사용해서, 
 		inputPanel.add(new JLabel("단어: "));
 		// 2. 입력 공간 붙이기. 
-		inputPanel.add(new JTextField(10));
+		wordField = new JTextField(10);
+		inputPanel.add(wordField);
 		
 		// 영어 뜻 입력하는 1) 라벨 2) 입력란
 		inputPanel.add(new JLabel("뜻: "));
-		inputPanel.add(new JTextField(10));
+		meaningField = new JTextField(10);
+		inputPanel.add(meaningField);
 		
 		// 단어를 추가하는 버튼 
-		inputPanel.add(new JButton("단어추가"));
+		JButton addButton = new JButton("단어추가");
+		inputPanel.add(addButton);
 		
 		// 랜덤으로 출력해주는 버튼 
-		JButton addButton = new JButton("랜덤 단어 표시");
-		inputPanel.add(addButton);
+		inputPanel.add(new JButton("랜덤 단어 표시"));
 		
 		//==================================================
 		
@@ -114,6 +116,7 @@ public class WordTestLsy1205Test extends JFrame {
 		// 전역으로 설정된, 단어 입력란 참조형 변수를 이용해서 가지고 올 예정.
 		//1
 		String word = wordField.getText();
+		System.out.println("addWord() , word 확인 : " +word );
 		
 		// 입력된 뜻 가져오기.
 		//2
@@ -124,8 +127,10 @@ public class WordTestLsy1205Test extends JFrame {
 		if(!word.isEmpty() && !meaning.isEmpty()) {
 			// 임시로 출력할 JLabel를 만들어서, 여기에 단어를 붙이는 과정. 
 			// 임시 라벨 생성. 
+			// 1
 			JLabel wordLabel = new JLabel(word);
-			// 마우스 커서를 손 모양으로 변경하는 기능. 옵션, 
+			// 마우스 커서를 손 모양으로 변경하는 기능. 옵션,
+			// 
 			wordLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			
 			// 이벤트 리스너 추가하기. , 마우스 클릭시 뜻을 보여주는 기능.
@@ -135,6 +140,7 @@ public class WordTestLsy1205Test extends JFrame {
 			// 이용 가능함. 
 			// 익명 클래스로 구현. 
 			// new 부모 클래스의(인터페이스, 클래스) {}
+			// 3
 			wordLabel.addMouseListener(new MouseAdapter() {
 				// 상태 변수, 설정, 뜻을 보여주는 상태. 
 				private boolean showMeaning = false;
@@ -150,16 +156,22 @@ public class WordTestLsy1205Test extends JFrame {
 				}
 			});
 			// Map 메모리에 저장하는 로직. 
+			// 4
 			wordLabelMap.put(word, wordLabel);
 			wordMeaningLabelMap.put(word, meaning);
 			
 			// 패널에 라벨 추가. 
+			// wordPanel : 단어를 출력하는 패널 공간, -> JLabel 붙이고 있음. 
 			wordPanel.add(wordLabel);
 			// 레이아웃 업데이트 
 			wordPanel.revalidate();
+			// 패널 그림을 다시 그리기. 
+			wordPanel.repaint();
 			
 		} // if
-		// 유효성 통과 안될 때, 경고창 보여주기. 
+		// 유효성 통과 안될 때, 경고창 보여주기.
+		// 영어 , 단어 뜻을 입력을 안될 경우
+		//4
 		else {
 			
 		}
