@@ -84,7 +84,7 @@ public class MenuActionEventEx extends JFrame {
 				if (imgLabel.getIcon() != null)
 					return;
 // 이미 로딩되었으면 리턴
-				imgLabel.setIcon(new ImageIcon("src/util/images/sea1_300.png"));
+				imgLabel.setIcon(new ImageIcon("images/test11.png"));
 				break;
 			case "Hide":
 				imgLabel.setVisible(false);
