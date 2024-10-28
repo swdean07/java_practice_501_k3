@@ -7,8 +7,8 @@ import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class ThreadTimerEx extends JFrame {
-	public ThreadTimerEx() {
+public class ThreadTimerWithInterfaceEx2 extends JFrame {
+	public ThreadTimerWithInterfaceEx2() {
 		setTitle("Thread를 상속받은 타이머 스레드 예제");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
@@ -24,12 +24,9 @@ public class ThreadTimerEx extends JFrame {
 		// B 클래스에 , 라벨 인스턴스를 전달하면, 
 		// 전달된 라벨은 A, B 클래스에서 같이 바라보는 공통의 라벨. 
 		TimerThread th = new TimerThread(timerLabel);
-		// 변경2. 
-		Thread th2 = new Thread(th);
-		
 		setSize(250, 150);
 		setVisible(true);
-		th2.start(); // 타이머 스레드의 실행을 시작하게 한다.
+		th.start(); // 타이머 스레드의 실행을 시작하게 한다.
 	}
 //
 	// ThreadTimerEx : A 라는 클래스 
@@ -38,8 +35,7 @@ public class ThreadTimerEx extends JFrame {
 	// 결론, A 라는 클래스에서, 특정의 인스턴스를 B라는 클래스에 전달시. 
 	// B라는 클래스에서는, 받을 때, 타입과 변수를 선언하고, 
 	// 생성자를 초기화를 해서 사용하는 기법. 
-	// 변경1
-	class TimerThread implements Runnable {
+	class TimerThread extends Thread {
 		// 작업 순서2,
 		// 받을 변수를 전역으로 선언하고, 
 		private JLabel timerLabel; // 타이머 값이 출력되는 레이블
@@ -68,6 +64,6 @@ public class ThreadTimerEx extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new ThreadTimerEx();
+		new ThreadTimerWithInterfaceEx2();
 	}
 }
