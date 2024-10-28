@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.Vector;
 
-import ex_241023_ch7.homework.PersonLsy1205Test;
+import util.PersonLsy1205Test;
 
 public class IteratorEx {
 	public static void main(String[] args) {
