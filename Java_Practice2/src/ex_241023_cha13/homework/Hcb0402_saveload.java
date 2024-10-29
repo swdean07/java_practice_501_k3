@@ -89,7 +89,7 @@ public class Hcb0402_saveload {
 	// mothod load
 	public static void loadWord() {
 		// 불러올 파일
-		File loadFile = new File("c:\\Temp\\Hcb0402_baseWord.txt");
+		File loadFile = new File("c:\\Temp\\Hcb0402_baseWord.csv");
 		try {
 			//fin 생성
 			FileInputStream fin = new FileInputStream(loadFile);
