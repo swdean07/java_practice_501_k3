@@ -25,12 +25,13 @@ public class FileClassExample {
 		else if (f1.isDirectory())
 			res = "디렉토리";
 		System.out.println(f1.getPath() + "은 " + res + "입니다.");
+		// 없는 경로 확인 후, 폴더 생성 해주기.
 		File f2 = new File("c:\\Temp\\java_sample");
 		if (!f2.exists()) {
 			f2.mkdir();
 		}
-		listDirectory(new File("c:\\Temp"));
-		f2.renameTo(new File("c:\\Temp\\javasample"));
-		listDirectory(new File("c:\\Temp"));
+		listDirectory(new File("D:\\0-수업\\java_workspace_241017"));
+		f2.renameTo(new File("c:\\Temp\\javasample241029"));
+//		listDirectory(new File("c:\\Temp"));
 	}
 }
