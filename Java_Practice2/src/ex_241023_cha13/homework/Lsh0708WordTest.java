@@ -97,6 +97,9 @@ public class Lsh0708WordTest extends JFrame {
 
 		JButton loadButton = new JButton("Load");
 		inputPanel.add(loadButton);
+		
+		JButton showButton = new JButton("Show All");
+		inputPanel.add(showButton);
 
 		// 단어 출력 해주는 UI
 		wordPanel = new JPanel();
@@ -123,6 +126,9 @@ public class Lsh0708WordTest extends JFrame {
 		saveButton.addActionListener(e -> saveWord());
 
 		loadButton.addActionListener(e -> loadWord());
+		
+		showButton.addActionListener(e -> showAllWord());
+
 
 		setVisible(true);
 
@@ -279,6 +285,12 @@ public class Lsh0708WordTest extends JFrame {
 			System.out.println("입출력 오류");
 		}
 	}
+	private void showAllWord() {
+		for (JLabel jLabel : wordLabelMap.values()) {
+			jLabel.setVisible(true);
+		}
+	}
+	
 	
 	private void addClickListener(JLabel wordLabel,String word, String meaning) {
 	    wordLabel.addMouseListener(new MouseAdapter() {
