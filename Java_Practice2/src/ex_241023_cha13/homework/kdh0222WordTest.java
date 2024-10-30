@@ -131,7 +131,7 @@ public class kdh0222WordTest extends JFrame {
 	}
 
 	private void saveWordsToFile() {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter("wordTestCsv.csv"))) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter("c:\\Temp\\test.txt"))) {
 			for (String word : wordLabelMap.keySet()) {
 				String meaning = wordMeaningLabelMap.get(word);
 				writer.write(word + "," + meaning);
