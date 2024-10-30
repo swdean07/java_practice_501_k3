@@ -28,6 +28,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+// 구조, 각 라벨 인스턴스를 각각 생성하고, 각 라벨을 패널에 붙이는 작업. 
 public class WordTestLsy1205Test extends JFrame {
 	// 전역으로 선언만 했음. 생성자에서 초기화 하면, 다른 곳에서 사용이 가능
 	private JTextField wordField; // 영어단어 입력 필드
@@ -50,7 +51,7 @@ public class WordTestLsy1205Test extends JFrame {
 		// 창 제목
 		setTitle("단어 프로그램 V 1.0.0");
 		// 창 사이즈. 기본 크기.
-		setSize(1000, 300);
+		setSize(1300, 300);
 		// 창의 닫기를 클릭시, 정상 종료.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -229,6 +230,9 @@ public class WordTestLsy1205Test extends JFrame {
 	} // addWord()
 
 	// 랜덤 기능
+	// 컬렉션, 맵에 담기, 임시 메모리,
+	// 맵 랜덤으로 선택이 어려움, -> 순서를 정해야함, -> ArrayList 형식으로 변환해서,
+	// 랜덤 클래스 이용.
 	public void showRandomWord() {
 		// 맵에, 단어가 추가 안된 상황,
 		if (wordLabelMap.isEmpty()) {
@@ -237,46 +241,51 @@ public class WordTestLsy1205Test extends JFrame {
 		}
 
 		// 랜덤하게 하나만 출력, 나머지 단어는 모두 가리기.
-		//1
+		// 1
 		// wordLabelMap, key : String, value: 각 단어가 표시된 라벨
 //		for (JLabel jLabel : wordLabelMap.values()) {
 //			jLabel.setVisible(false);
 //		}
-		//2
+		// 2
 //	    SwingUtilities.invokeLater(() -> {
 //	        for (JLabel jLabel : wordLabelMap.values()) {
 //	            jLabel.setVisible(false); // 모든 JLabel 숨기기
 //	        }
 //	    });
-		
-		//3
-		  // 모든 JLabel을 숨기기
-	    wordLabelMap.values().forEach(jLabel -> jLabel.setVisible(false));
 
-	    // UI 전체 갱신 (모든 JLabel이 숨겨지도록 보장)
-	    wordLabelMap.values().forEach(jLabel -> {
-	        jLabel.revalidate();
-	        jLabel.repaint();
-	    });
+		// 3
+		// 모든 JLabel을 숨기기
+		wordLabelMap.values().forEach(jLabel -> jLabel.setVisible(false));
+
+		// UI 전체 갱신 (모든 JLabel이 숨겨지도록 보장)
+		wordLabelMap.values().forEach(jLabel -> {
+			jLabel.revalidate();
+			jLabel.repaint();
+		});
 
 		// 랜덤하게 단어 하나 선택.
 		// 맵 -> 리스트 형식으로 변환.
 		// wordLabelMap.keySet(), 영어 단어 , car, -> car 를 출력하는 라벨을 생성.
 		List<String> words = new ArrayList<String>(wordLabelMap.keySet());
 		// words 에는 맵에 등록된 영어 단어의 영어만 전부다 리스트로 변환.
+		// words = {"car","house","red"};
+		// words.get(0) -> "car"
+		// words.get(1) -> "house"
+		// words.get(2) -> "red"
 		String randomWord = words.get(random.nextInt(words.size()));
 
 		// 선택된 단어만 보이게 하는 설정.
 //		wordLabelMap.get(randomWord).setVisible(true);
-	    // 선택된 단어의 JLabel만 보이도록 설정
-	    SwingUtilities.invokeLater(() -> {
-	        wordLabelMap.get(randomWord).setVisible(true);
-	    });
+		// wordLabelMap -> {"car" : JLabel인스턴스}
+		// 선택된 단어의 JLabel만 보이도록 설정
+		SwingUtilities.invokeLater(() -> {
+			wordLabelMap.get(randomWord).setVisible(true);
+		});
 	}
 
 	// wordMeaningLabelMap을 파일에 저장하는 함수
 	public void addFile() {
-		Path filePath = Paths.get("C:\\Temp\\wordTest.txt");
+		Path filePath = Paths.get("C:\\Temp\\wordTest_241030.txt");
 		try (BufferedWriter writer = Files.newBufferedWriter(filePath)) {
 			for (Map.Entry<String, String> entry : wordMeaningLabelMap.entrySet()) {
 				writer.write(entry.getKey() + "," + entry.getValue());
@@ -297,6 +306,7 @@ public class WordTestLsy1205Test extends JFrame {
 		wordPanel.revalidate();
 		// 패널 그림을 다시 그리기.
 		wordPanel.repaint();
+
 		wordLabelMap.clear();
 		wordMeaningLabelMap.clear();
 
@@ -310,12 +320,15 @@ public class WordTestLsy1205Test extends JFrame {
 		try (BufferedReader reader = Files.newBufferedReader(filePath)) {
 			String line;
 			while ((line = reader.readLine()) != null) {
+				// 1 car,자동차,house,집
 				String[] parts = line.split(",");
+				// 2 parts = car,자동차,house,집
 				for (int i = 0; i < parts.length - 1; i += 2) { // 짝수 인덱스는 단어, 홀수 인덱스는 뜻
 
 					String word = parts[i];
 					String meaning = parts[i + 1];
 					System.out.println("word: " + word + ", meaning: " + meaning);
+					// 각각 인스턴스를 매번 생성함. 메모리 부족 현상의 원인이 됨.
 					JLabel wordLabel = new JLabel(word);
 					wordLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -340,8 +353,8 @@ public class WordTestLsy1205Test extends JFrame {
 					wordPanel.add(wordLabel);
 
 				}
-			}
-			// 레이아웃 업데이트
+			} // while
+				// 레이아웃 업데이트
 			wordPanel.revalidate();
 			// 패널 그림을 다시 그리기.
 			wordPanel.repaint();
@@ -349,7 +362,7 @@ public class WordTestLsy1205Test extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	} // loadFile
 
 	// 모든 단어 출력하기.
 	public void showAllWord() {
@@ -396,6 +409,7 @@ public class WordTestLsy1205Test extends JFrame {
 	}
 
 	// 파일에 wordMeaningLabelMap의 데이터를 저장하는 메서드
+	// 다른이름으로 파일 생성해주는 기능
 	private void saveToFile(File file) {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
 			for (Map.Entry<String, String> entry : wordMeaningLabelMap.entrySet()) {
