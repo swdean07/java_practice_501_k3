@@ -126,7 +126,7 @@ public class Kjy1122WordTest extends JFrame {
     }
 
     private void saveWordsToFile() {
-        File file = new File("C:\\Users\\it\\Documents\\0-수업\\WordTest.txt");
+        File file = new File("C:\\Temp\\WordTest.txt");
         try {
             if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
@@ -145,7 +145,7 @@ public class Kjy1122WordTest extends JFrame {
     }
 
     private void loadWordsFromCsvFile() {
-        File file = new File("wordTestCsv.csv");
+        File file = new File("C:\\Temp\\wordTestCsv.csv");
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 wordPanel.removeAll();

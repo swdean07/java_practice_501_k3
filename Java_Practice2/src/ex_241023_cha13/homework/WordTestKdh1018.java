@@ -126,7 +126,7 @@ public class WordTestKdh1018 extends JFrame {
     }
 
     private void saveWords() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("wordTest.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("c:\\Temp\\wordTest.txt"))) {
             for (String word : wordLabelMap.keySet()) {
                 String meaning = wordMeaningLabelMap.get(word);
                 writer.write(word + "," + meaning);
@@ -139,7 +139,7 @@ public class WordTestKdh1018 extends JFrame {
     }
 
     private void loadWords() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("wordTestCsv.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("c:\\Temp\\wordTestCsv.csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
