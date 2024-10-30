@@ -110,7 +110,7 @@ public class Lsh1208_241029homework_wordTest extends JFrame {
 		String word = wordField.getText();
 		String meaning = wordMeanField.getText();
 
-		String filePath = "C:\\Windows\\test.txt";
+		String filePath = "C:\\Temp\\test.txt";
 
 		if (!word.isEmpty() && !meaning.isEmpty()) {
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
@@ -130,7 +130,7 @@ public class Lsh1208_241029homework_wordTest extends JFrame {
 	}
 
 	public void loadword() {
-		String filePath = "C:\\Windows\\test.txt";
+		String filePath = "C:\\Temp\\test.txt";
 		wordPanel.removeAll();
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
