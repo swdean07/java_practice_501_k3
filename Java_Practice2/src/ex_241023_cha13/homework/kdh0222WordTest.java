@@ -144,7 +144,7 @@ public class kdh0222WordTest extends JFrame {
 	}
 
 	private void loadWordsFromFile() {
-		File csvFile = new File("c:\\Temp\\test.tx");
+		File csvFile = new File("c:\\Temp\\test.txt");
 
 		// 파일이 없을 때 메시지 표시 후 종료
 		if (!csvFile.exists()) {
