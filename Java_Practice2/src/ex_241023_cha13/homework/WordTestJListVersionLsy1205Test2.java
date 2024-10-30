@@ -48,10 +48,12 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 	private Random random;
 
 	// JList 버전
+	// 변경부분1
+	// JList 에 데이터를 연결할 도구
 	private DefaultListModel<String> wordListModel = new DefaultListModel<>();
+	// JList UI 표시. 
 	private final JList<String> wordList = new JList<>(wordListModel);
 	private final JLabel meaningLabel = new JLabel("뜻을 보려면 단어를 선택하세요");
-	private List<String> allWordList = new ArrayList<>();;
 
 	public WordTestJListVersionLsy1205Test2() {
 
@@ -113,11 +115,19 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 		add(inputPanel, BorderLayout.NORTH);
 
 		// 2
+		// 변경부분2
 		// // 단어 리스트 설정
+		// JList 선택 모드 설정
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		// JList 에서 하나 선택시, 이벤트 리스너 설정, 클릭시 실행할 함수를 지정.
 		wordList.addListSelectionListener(e -> {
+			// JList 에서 선택된 영어 단어,  ex) car, house 각 선택된 단어를 가리킴.
 			String selectedWord = wordList.getSelectedValue();
+			// 1차 기본 유효성 체크. 
 			if (selectedWord != null) {
+				// 뜻을 보여주는 JLabel 인스턴스 하나만 사용해서, 메모리 낭비를 줄이기.
+				// 앞에서, 매번 각 인스턴스 생성했고, 그래서, 이번에 싱글톤으로 변경. 
+				// 하나의 라벨 인스턴스에 문자열만 교체하는 방법으로 개선.
 				meaningLabel.setText("뜻: " + wordMeaningLabelMap.get(selectedWord));
 			}
 		});
@@ -125,6 +135,7 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 		add(scrollPane, BorderLayout.WEST);
 
 		// 뜻을 보여줄 JLabel 설정
+		// 변경부분3
 		meaningLabel.setFont(new Font("돋움", Font.BOLD, 16));
 		meaningLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(meaningLabel, BorderLayout.CENTER);
@@ -160,7 +171,8 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 		String meaning = meaningField.getText();
 
 		if (!word.isEmpty() && !meaning.isEmpty()) {
-
+			// 변경부분4
+			// 	단어 추가시 wordListModel, JList와 연결된 리스트, 여기의 요소가 화면에 나타남. 
 			wordMeaningLabelMap.put(word, meaning);
 			wordListModel.addElement(word);
 			// 입력 필드 초기화
@@ -178,7 +190,7 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 			JOptionPane.showMessageDialog(null, "단어가 입력 안됨", "먼저, 단어를 추가해주세요", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-
+		// 변경부분5
 		List<String> words = new ArrayList<String>(wordMeaningLabelMap.keySet());
 		String randomWord = words.get(random.nextInt(words.size()));
 		wordListModel.clear();
@@ -189,6 +201,7 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 
 	// 초기화 하기.
 	public void initWord() {
+		// 변경부분6
 		wordListModel.clear();
 		wordLabelMap.clear();
 		wordMeaningLabelMap.clear();
@@ -210,6 +223,7 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 					String meaning = parts[i + 1];
 					System.out.println("word: " + word + ", meaning: " + meaning);
 					wordMeaningLabelMap.put(word, meaning);
+					// 변경부분7
 					wordListModel.addElement(word); // 단어 리스트에 추가
 
 				}
@@ -229,6 +243,7 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 		}
 		List<String> words = new ArrayList<String>(wordMeaningLabelMap.keySet());
 		for (String string : words) {
+			// 변경부분8
 			wordListModel.addElement(string);
 		}
 
@@ -279,6 +294,7 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 		}
 	}
 
+	// 변경부분9
 	// JList 에서 선택된 단어 표기
 	private void showMeaningForSelectedWord() {
 		String selectedWord = wordList.getSelectedValue();
@@ -287,6 +303,7 @@ public class WordTestJListVersionLsy1205Test2 extends JFrame {
 		}
 	}
 
+	// 변경부분10
 	// JList 에서 선택된 단어 삭제
 	private void deleteWord() {
 		int selectedIndex = wordList.getSelectedIndex();
