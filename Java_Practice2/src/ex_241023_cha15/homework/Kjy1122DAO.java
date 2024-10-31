@@ -58,7 +58,9 @@ public class Kjy1122DAO {
 
         try {
             con = DriverManager.getConnection(url, userid, passwd);
-            String sql = "INSERT INTO members (name, email, password) VALUES (?, ?, ?)";
+            String sql = "insert into members(" + "id,name,email,password" + ") "
+					+ "values(member501_seq.NEXTVAL,?,?,?)";
+//            String sql = "INSERT INTO members (name, email, password) VALUES (?, ?, ?)";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, name);
             pstmt.setString(2, email);
