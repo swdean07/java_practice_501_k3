@@ -85,7 +85,7 @@ public class Hcb0402_Frame {
 			String name = dto.getName();
 			String email = dto.getEmail();
 			String password = dto.getPassword();
-			JLabel idName = new JLabel(String.valueOf(id) + name);
+			JLabel idName = new JLabel(String.valueOf(id) + "." + name);
 			idName.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent e) {
 					centerPanel.removeAll();
