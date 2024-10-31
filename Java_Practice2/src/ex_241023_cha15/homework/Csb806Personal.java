@@ -16,7 +16,7 @@ public class Csb806Personal extends JFrame {
     
     public Csb806Personal() {
         setTitle("Membership");
-        setSize(600, 300);
+        setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         setLayout(new BorderLayout());
@@ -50,7 +50,7 @@ public class Csb806Personal extends JFrame {
         
         // 회원 정보 표시 패널
         memberPanel = new JPanel();
-        memberPanel.setLayout(new FlowLayout());
+        memberPanel.setLayout(new BoxLayout(memberPanel, BoxLayout.Y_AXIS));
         
         add(inputPanel, BorderLayout.NORTH);
         add(memberPanel, BorderLayout.CENTER);
@@ -83,7 +83,12 @@ public class Csb806Personal extends JFrame {
         ArrayList<Csb806DTO> members = dao.select(); // 모든 회원 정보를 가져옴
         if (members != null) {
             for (Csb806DTO member : members) {
-                memberPanel.add(new JLabel(member.toString()));
+            	memberPanel.add(new JLabel("이름: " + member.getName()));
+                memberPanel.add(new JLabel("이메일: " + member.getEmail()));
+                memberPanel.add(new JLabel("비밀번호: " + member.getPassword()));
+                
+                // 빈 줄을 추가하여 회원 간 구분
+                memberPanel.add(new JLabel("---------------------"));
             }
         } else {
             memberPanel.add(new JLabel("회원 정보가 없습니다."));
@@ -97,5 +102,3 @@ public class Csb806Personal extends JFrame {
         new Csb806Personal();
     }
 }
-
-
