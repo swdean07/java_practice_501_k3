@@ -8,6 +8,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -17,7 +18,6 @@ public class Lsh0708_TestMain extends JFrame {
 	private JTextField passField;
 	private JTextField emailField;
 	private JPanel userPanel; // 단어 표시할 필드
-	
 	Lsh0708_DAO dao = new Lsh0708_DAO();
 
 	public Lsh0708_TestMain() {
@@ -29,9 +29,10 @@ public class Lsh0708_TestMain extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setLayout(new BorderLayout());
-
+		
 		JPanel inputPanel = new JPanel();
 		inputPanel.setLayout(new FlowLayout());
+		
 		userPanel = new JPanel();
 		userPanel.setLayout(new BoxLayout(userPanel, BoxLayout.Y_AXIS));
 
@@ -71,6 +72,7 @@ public class Lsh0708_TestMain extends JFrame {
 
 		if (userID.isEmpty() || userPass.isEmpty() || userEmail.isEmpty()) {
 			System.out.println("모든 필드를 입력하세요.");
+			JOptionPane.showMessageDialog(null, "모든 필드를 입력하세요.", "모든 필드를 입력하세요.", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		int result = dao.insertDB(userID, userEmail, userPass);
@@ -85,13 +87,15 @@ public class Lsh0708_TestMain extends JFrame {
 	private void searchUser() {
 		ArrayList<Lsh0708_DTO> list = dao.select();
 		  userPanel.removeAll();
+		  int count = 1;
 		for (Lsh0708_DTO dto : list) {
-			JLabel userLabel = new JLabel("아이디: "+ dto.getUserId()+", 이메일: "+ dto.getUserMail()+", 패스워드 :"+dto.getUserPass());
+			JLabel userLabel = new JLabel(count + ". 아이디: "+ dto.getUserId()+", 이메일: "+ dto.getUserMail()+", 패스워드 :"+dto.getUserPass());
 			userPanel.add(userLabel);
 			String name = dto.getUserId();
 			String email = dto.getUserMail();
 			String pass = dto.getUserPass();
 			System.out.println(name + "\t" + email + "\t" + pass);
+			count++;
 			
 		} // for ~ each 문을 이용해서 ArrayList 에 저장된 레코드의 값을 출력한다.
 		userPanel.revalidate(); // Refresh the userPanel
