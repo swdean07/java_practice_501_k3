@@ -73,7 +73,7 @@ public class JDBC_Ex_DAO {
 	}// select
 
 	// insert 기능 넣기.
-	public int insertDB() {
+	public int insertDB(int deptNo, String deptName, String loc) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -81,9 +81,9 @@ public class JDBC_Ex_DAO {
 			con = DriverManager.getConnection(url, userid, passwd);
 			String sql = "INSERT INTO dept(deptno,dname,loc)" + "VALUES(?,?,?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, 80);
-			pstmt.setString(2, "개발3");
-			pstmt.setString(3, "부산3");
+			pstmt.setInt(1, deptNo);
+			pstmt.setString(2, deptName);
+			pstmt.setString(3, loc);
 			result = pstmt.executeUpdate();
 			System.out.println(result + "개의 레코드가 저장");
 		} catch (Exception e) {
