@@ -9,6 +9,12 @@ public class JDBC_Ex_Presentation_Logic {
 		// 현재, 1개 select , 
 		JDBC_Ex_DAO dao = new JDBC_Ex_DAO();
 		// JDBC_Ex_DAO 클래스를 사용하기 위해서 객체 생성.
+		
+		// DAO, 2) insert 기능 추가해서, 
+		// 여기에서 이용해보기. 
+		int result = dao.insertDB(99,"더미부서1","부산진구1");
+		System.out.println("DAO 에서 insert 기능 추가 후 : 값반환:" + result +"개 추가됨.");
+		
 
 		ArrayList<JDBC_Ex_DTO> list = dao.select();
 		// JDBC_Ex_DAO 클래스의 select 메소드 호출.
