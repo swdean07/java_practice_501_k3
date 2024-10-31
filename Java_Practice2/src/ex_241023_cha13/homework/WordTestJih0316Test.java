@@ -126,7 +126,7 @@ public class WordTestJih0316Test extends JFrame {
 	}
 
 	private void saveWord() {
-		try (FileWriter writer = new FileWriter("wordTest.txt")) {
+		try (FileWriter writer = new FileWriter("c:\\Temp\\wordTest.txt")) {
 			for (String word : wordMeaningLabelMap.keySet()) {
 				writer.write(word + "," + wordMeaningLabelMap.get(word) + "\n");
 			}
@@ -137,7 +137,7 @@ public class WordTestJih0316Test extends JFrame {
 	}
 
 	private void loadWord() {
-		try (FileReader reader = new FileReader("wordTestCsv.csv")) {
+		try (FileReader reader = new FileReader("c:\\Temp\\wordTestCsv.csv")) {
 			wordLabelMap.clear();
 			wordMeaningLabelMap.clear();
 			wordPanel.removeAll();

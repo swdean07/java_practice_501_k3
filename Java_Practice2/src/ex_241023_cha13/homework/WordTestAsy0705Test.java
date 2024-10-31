@@ -227,7 +227,7 @@ public class WordTestAsy0705Test extends JFrame {
 	}
 
 	public void saveWord() {
-		try (FileWriter writer = new FileWriter("C:\\Users\\it\\git\\java_practice_501_k3\\Java_Practice2\\src\\ex_241023_cha13\\homework\\wordTest.txt")) {
+		try (FileWriter writer = new FileWriter("C:\\Temp\\wordTest.txt")) {
 			for (Map.Entry<String, String> entry : wordMeaningLabelMap.entrySet()) {
 				writer.write(entry.getKey() + "," + entry.getValue() + "\n");
 			}
@@ -238,7 +238,7 @@ public class WordTestAsy0705Test extends JFrame {
 	}
 
 	public void loadWord() {
-		try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\it\\git\\java_practice_501_k3\\Java_Practice2\\src\\ex_241023_cha13\\homework\\wordTest.txt"))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Temp\\wordTest.txt"))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String[] tokens = line.split(",");

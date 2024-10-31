@@ -131,7 +131,7 @@ public class WordTestPkh0827Test extends JFrame {
 	}
 
 	private void saveWords() {
-		try (FileWriter fileWriter = new FileWriter("wordTest.txt")) {
+		try (FileWriter fileWriter = new FileWriter("C:\\Temp\\wordTesword.txt")) {
 			for (String word : wordLabelMap.keySet()) {
 				String meaning = wordMeaningLabelMap.get(word);
 				fileWriter.write(word + " = " + meaning+"\n");
@@ -143,7 +143,7 @@ public class WordTestPkh0827Test extends JFrame {
 	}
 
 	private void loadWords() {
-		try (BufferedReader reader = new BufferedReader(new FileReader("wordTestCsv.csv"))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Temp\\wordTestCsv.csv"))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String[] parts = line.split(","); // CSV 형식에서 '='를 기준으로 분리
