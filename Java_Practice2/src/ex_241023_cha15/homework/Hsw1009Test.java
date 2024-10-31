@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class Hsw1009ProTest extends JFrame {
+public class Hsw1009Test extends JFrame {
     private JTextField nameField;
     private JTextField emailField;
     private JPasswordField passwordField;
@@ -21,7 +21,7 @@ public class Hsw1009ProTest extends JFrame {
 	private String userid;
 	private String passwd;
 
-    public Hsw1009ProTest() {
+    public Hsw1009Test() {
         setTitle("회원 관리 프로그램 V 1.0.0");
         setSize(800, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,7 +138,7 @@ public class Hsw1009ProTest extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Hsw1009ProTest();
+        new Hsw1009Test();
     }
 }
 
