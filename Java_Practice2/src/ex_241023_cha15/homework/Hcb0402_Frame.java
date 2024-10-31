@@ -106,6 +106,10 @@ public class Hcb0402_Frame {
 		westPanelInside.repaint();
 		centerPanel.revalidate();
 		centerPanel.repaint();
+		selectedId = 0;
+		selectedName = null;
+		selectedEmail = null;
+		selectedPassword = null;
 	}
 
 	// create method
@@ -127,7 +131,11 @@ private void delete() {
 		if (!name.getText().isEmpty()) {
 			new Hcb0402_DAO().delete(name.getText());
 			read();
-		} else {
+		} else if (selectedId != 0) {
+			new Hcb0402_DAO().delete(selectedId);
+			read();
+		}
+		else {
 			JOptionPane.showMessageDialog(null, "삭제하고 싶은 이름을 입력해 주세요", "입력 오류", JOptionPane.ERROR_MESSAGE);
 		}
 		name.setText("");

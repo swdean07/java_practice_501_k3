@@ -88,7 +88,7 @@ public class Hcb0402_DAO {
 		}
 	}
 
-	// delete method 정의
+	// 이름을 받아 delete method 정의
 	public void delete(String name) {
 		try {
 			con = DriverManager.getConnection(url, userid, passwd);
@@ -110,8 +110,29 @@ public class Hcb0402_DAO {
 			}
 		}
 	}
-
-	// update method 정의
+	public void delete(int id) {
+		try {
+			con = DriverManager.getConnection(url, userid, passwd);
+			String query = "DELETE FROM member501 WHERE id = ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, id);
+			int n = pstmt.executeUpdate();
+			JOptionPane.showMessageDialog(null, n + "개의 행이 삭제되었습니다", "삭제 완료", JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	// 선택하여 update method 정의
 	public void update(int id, String name, String email, String pass) {
 		try {
 			con = DriverManager.getConnection(url, userid, passwd);
