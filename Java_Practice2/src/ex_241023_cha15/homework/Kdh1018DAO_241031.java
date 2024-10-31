@@ -23,7 +23,9 @@ public class Kdh1018DAO_241031 {
     }
 
     public void addUser(Kdh1018DTO_241031 user) {
-        String sql = "INSERT INTO NewMembers (name, email, password) VALUES (?, ?, ?)";
+    	String sql = "insert into NewMembers(" + "id,name,email,password" + ") "
+				+ "values(member501_seq.NEXTVAL,?,?,?)";
+//        String sql = "INSERT INTO NewMembers (name, email, password) VALUES (?, ?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, user.getName());
